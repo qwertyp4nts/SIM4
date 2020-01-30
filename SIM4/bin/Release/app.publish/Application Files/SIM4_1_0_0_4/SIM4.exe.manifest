@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="SIM4.exe" version="1.0.0.4" publicKeyToken="0fcad35b77ef7560" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="SIM4" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="SIM4.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MccDaq.dll" size="175448">
+      <assemblyIdentity name="MccDaq" version="2.7.0.0" publicKeyToken="A37EEFCF5C6CA10A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>QZIB+Vrb8+kLHPNxct7BgvNbIB2NHrzuxy4GIVw+y0A=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SIM4.exe" size="41392">
+      <assemblyIdentity name="SIM4" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Uuhb42wgR2ScDJMHOrhs8yfAO2SoIbyXKyhMS7RErSk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="SIM4.exe.config" size="1003">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>tzdlSGlm0AQRTrYsHB8WeUTCyCI8TChwOe3nJyomUeI=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=NAUTILUS\mila" issuerKeyHash="34afcaa53e9c993b729ec5b423fe2b917f65774e" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>l0nxLcebA1B9AQNN20Zzybj+sDzLM9PahlIK5MVdSHI=</DigestValue></Reference></SignedInfo><SignatureValue>GfCBwYTLpnNKnMxtxbyS1eiS2IPQAvIbOSdTTxkrgOcsSKVZ2TFEBplMg57uFg9ApZ/7ufIkl3I9IjZy5jY9cVddPlXxtKqvzAoKe/C0tDxiwEXybbsVHx3EKr1q/5yryUQIqzKHNTOqdlzvJIM2QvE6UMDGUN8zE7MjXDuQYVc=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>5uJMx/8iMQDjwuj33q25QRXym6APhtK9xQaCgMRJrmWIr0O//Cfg6w41DZmtfsQsO8kZKUmmMaVWtYVxM8vHewkRVkhBtU5Kl7HhkJoNVn0yBVO3H/V7wLROzNBBLESkTqvZPtlhwl52cSH5vmurBVsa8lcScCxIDTYYynFEhEE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="72485dc5e40a5286dad333cb3cb0feb8c97346db4d03017d50039bc72df14997" Description="" Url=""><as:assemblyIdentity name="SIM4.exe" version="1.0.0.4" publicKeyToken="0fcad35b77ef7560" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=NAUTILUS\mila</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>Dej6qESvCVknAMYwLPPunma/lvVCDxrsNXiJ92GZd+U=</DigestValue></Reference></SignedInfo><SignatureValue>VONGihUHWHfRKGB+Po7h/u1J3UATATRvPQnKfqqBbm63sn4f8nmhslJjv/4I/szGTienagihYlZsLcuaRqxM17XgKCesDEMKIho9Zo0jjVtftLfcNrWfjdpZJqMd36DF76BVIdxzYtKhbI9Tzu2lAg7+Rk3go4wvIgMD/wKdZOQ=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>5uJMx/8iMQDjwuj33q25QRXym6APhtK9xQaCgMRJrmWIr0O//Cfg6w41DZmtfsQsO8kZKUmmMaVWtYVxM8vHewkRVkhBtU5Kl7HhkJoNVn0yBVO3H/V7wLROzNBBLESkTqvZPtlhwl52cSH5vmurBVsa8lcScCxIDTYYynFEhEE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBzTCCATagAwIBAgIQHQ/pwTktN75KQm5ULrV1xTANBgkqhkiG9w0BAQsFADAlMSMwIQYDVQQDHhoATgBBAFUAVABJAEwAVQBTAFwAbQBpAGwAYTAeFw0xOTEyMDEyMjU0MTRaFw0yMDEyMDEwNDU0MTRaMCUxIzAhBgNVBAMeGgBOAEEAVQBUAEkATABVAFMAXABtAGkAbABhMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDm4kzH/yIxAOPC6PferblBFfKboA+G0r3FBoKAxEmuZYivQ7/8J+DrDjUNma1+xCw7yRkpSaYxpVa1hXEzy8d7CRFWSEG1TkqXseGQmg1WfTIFU7cf9XvAtE7M0EEsRKROq9k+2WHCXnZxIfm+a6sFWxryVxJwLEgNNhjKcUSEQQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAFnvA/ZNXjJi8E3A/yYdjwV3qd7Mn4J2998JetkUHiN2x2cY2w44kIX+C7M6i5I85CZ9fzxpvdvoebhPhIBuoYvNW/7fTJBV6hWtUKRkKn6se8QXFwLDfAZBNLe2kgS57HO4olQlhTym2THzct91rIHFiZNHEbdO7wgMfOv80Wb0</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

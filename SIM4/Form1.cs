@@ -19,6 +19,7 @@ namespace SIM4
         ScanOptions ScanOptions;
         int linked = 0;
         int linkedPairTwo = 0;
+        int linkedThrottle = 0;
 
         public Form1()
         {
@@ -83,11 +84,27 @@ namespace SIM4
 
             //maskedTextBox5 end
 
-            if (Regex.IsMatch(maskedTextBox6.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+
+            //maskedTextBox6 begin
+
+            if(linkedThrottle == 1)
             {
-                sendVoltage(5, float.Parse(maskedTextBox6.Text));
-                hScrollBar6.Value = SetScrollBar(maskedTextBox6.Text);
+                sendVoltage(5, float.Parse(maskedTextBox4.Text));
+                hScrollBar6.Value = SetScrollBar(maskedTextBox4.Text);
+                maskedTextBox6.Text = maskedTextBox4.Text;
             }
+
+            if (linkedThrottle == 0)
+            {
+                if (Regex.IsMatch(maskedTextBox6.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+                {
+                    sendVoltage(5, float.Parse(maskedTextBox6.Text));
+                    hScrollBar6.Value = SetScrollBar(maskedTextBox6.Text);
+                }
+            }
+
+            //maskedTextBox6 end
+
 
             //maskedTextBox7 begin
             if (linkedPairTwo == 1)
@@ -353,6 +370,32 @@ namespace SIM4
             }
         }
 
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox3.SelectedIndex == 1)
+            {
+                linkedThrottle = 1;
+                comboBox1.SelectedIndex = 2;
+                comboBox2.SelectedIndex = 2;
+                comboBox1.Enabled = false;
+                comboBox2.Enabled = false;
+                textBox6.Text = "Throttle Pedal";
+                textBox5.Text = "Pedal Tracking";
+                textBox4.Text = "Throttle Servo";
+                textBox12.Text = "Servo Tracking";
+            }
+
+            if (comboBox3.SelectedIndex == 0)
+            {
+                linkedThrottle = 0;
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                textBox6.Text = "";
+                textBox5.Text = "";
+                textBox4.Text = "";
+                textBox12.Text = "";
+            }
+        }
     }
 }
 

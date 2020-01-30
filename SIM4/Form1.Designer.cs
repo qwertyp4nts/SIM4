@@ -98,16 +98,18 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.label23 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -628,23 +630,23 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(702, 259);
+            this.textBox4.Location = new System.Drawing.Point(880, 259);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(301, 20);
+            this.textBox4.Size = new System.Drawing.Size(123, 20);
             this.textBox4.TabIndex = 57;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(702, 222);
+            this.textBox5.Location = new System.Drawing.Point(880, 222);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(301, 20);
+            this.textBox5.Size = new System.Drawing.Size(123, 20);
             this.textBox5.TabIndex = 56;
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(702, 185);
+            this.textBox6.Location = new System.Drawing.Point(880, 185);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(301, 20);
+            this.textBox6.Size = new System.Drawing.Size(123, 20);
             this.textBox6.TabIndex = 55;
             // 
             // textBox7
@@ -684,9 +686,9 @@
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(702, 297);
+            this.textBox12.Location = new System.Drawing.Point(880, 297);
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(301, 20);
+            this.textBox12.Size = new System.Drawing.Size(123, 20);
             this.textBox12.TabIndex = 58;
             // 
             // textBox13
@@ -749,48 +751,6 @@
             this.comboBox1.Text = "None";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::SIM4.Properties.Resources.link_black_smaller;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(493, 188);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(53, 50);
-            this.pictureBox1.TabIndex = 71;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = global::SIM4.Properties.Resources.link_green_smaller;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(493, 188);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(53, 50);
-            this.pictureBox2.TabIndex = 72;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Visible = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackgroundImage = global::SIM4.Properties.Resources.link_green_smaller;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Location = new System.Drawing.Point(493, 262);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(53, 50);
-            this.pictureBox3.TabIndex = 76;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Visible = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackgroundImage = global::SIM4.Properties.Resources.link_black_smaller;
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox4.Location = new System.Drawing.Point(493, 262);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(53, 50);
-            this.pictureBox4.TabIndex = 75;
-            this.pictureBox4.TabStop = false;
-            // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
@@ -814,11 +774,77 @@
             this.label22.TabIndex = 73;
             this.label22.Text = "Link:";
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(732, 222);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(86, 13);
+            this.label23.TabIndex = 77;
+            this.label23.Text = "Pedal and Servo";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "Disabled",
+            "Enabled"});
+            this.comboBox3.Location = new System.Drawing.Point(718, 245);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 21);
+            this.comboBox3.TabIndex = 78;
+            this.comboBox3.Text = "Disabled";
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::SIM4.Properties.Resources.link_green_smaller;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.Location = new System.Drawing.Point(493, 262);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(53, 50);
+            this.pictureBox3.TabIndex = 76;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImage = global::SIM4.Properties.Resources.link_black_smaller;
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox4.Location = new System.Drawing.Point(493, 262);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(53, 50);
+            this.pictureBox4.TabIndex = 75;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::SIM4.Properties.Resources.link_green_smaller;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(493, 188);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(53, 50);
+            this.pictureBox2.TabIndex = 72;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::SIM4.Properties.Resources.link_black_smaller;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(493, 188);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(53, 50);
+            this.pictureBox1.TabIndex = 71;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1040, 726);
+            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.label23);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.comboBox2);
@@ -898,10 +924,10 @@
             this.Name = "Form1";
             this.Text = "SIM4";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -984,6 +1010,8 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox comboBox3;
     }
 }
 
