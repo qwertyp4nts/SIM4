@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIM4", "SIM4\SIM4.csproj", "{9976BA79-76E4-4FBE-9EF2-043A7F9EE3BD}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SIM-4", "SIM-4\SIM-4.vdproj", "{30F42FF9-823A-4E95-B705-EEA6809C0AB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9976BA79-76E4-4FBE-9EF2-043A7F9EE3BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9976BA79-76E4-4FBE-9EF2-043A7F9EE3BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9976BA79-76E4-4FBE-9EF2-043A7F9EE3BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9976BA79-76E4-4FBE-9EF2-043A7F9EE3BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30F42FF9-823A-4E95-B705-EEA6809C0AB6}.Debug|Any CPU.ActiveCfg = Debug
+		{30F42FF9-823A-4E95-B705-EEA6809C0AB6}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5D6A77C4-AA21-4ACC-A19F-A4792DBE120C}
+	EndGlobalSection
+EndGlobal

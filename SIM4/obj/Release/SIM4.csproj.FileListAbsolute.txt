@@ -1,0 +1,17 @@
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\bin\Release\SIM4.exe.config
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\bin\Release\SIM4.exe.manifest
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\bin\Release\SIM4.application
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\bin\Release\SIM4.exe
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\bin\Release\SIM4.pdb
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\bin\Release\MccDaq.dll
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\bin\Release\MccDaq.xml
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Release\SIM4.csprojAssemblyReference.cache
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Release\SIM4.Form1.resources
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Release\SIM4.Properties.Resources.resources
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Release\SIM4.csproj.GenerateResource.cache
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Release\SIM4.csproj.CoreCompileInputs.cache
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Release\SIM4.exe.manifest
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Release\SIM4.application
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Release\SIM4.csproj.CopyComplete
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Release\SIM4.exe
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Release\SIM4.pdb
