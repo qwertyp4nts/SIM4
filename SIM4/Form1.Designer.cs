@@ -118,7 +118,8 @@
             this.hScrollBarDIG0 = new System.Windows.Forms.HScrollBar();
             this.maskedTextBoxDIG0 = new System.Windows.Forms.MaskedTextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.maskedTextBoxDIG1 = new System.Windows.Forms.MaskedTextBox();
+            this.hScrollBarDIG1 = new System.Windows.Forms.HScrollBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -950,21 +951,35 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // button1
+            // maskedTextBoxDIG1
             // 
-            this.button1.Location = new System.Drawing.Point(517, 701);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 89;
-            this.button1.Text = "Go!";
-            this.button1.UseVisualStyleBackColor = true;
+            this.maskedTextBoxDIG1.HidePromptOnLeave = true;
+            this.maskedTextBoxDIG1.Location = new System.Drawing.Point(79, 741);
+            this.maskedTextBoxDIG1.Mask = "000";
+            this.maskedTextBoxDIG1.Name = "maskedTextBoxDIG1";
+            this.maskedTextBoxDIG1.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBoxDIG1.TabIndex = 90;
+            this.maskedTextBoxDIG1.Text = "0";
+            this.maskedTextBoxDIG1.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBoxDIG1_MaskInputRejected);
+            this.maskedTextBoxDIG1.TextChanged += new System.EventHandler(this.Form1_Load);
+            // 
+            // hScrollBarDIG1
+            // 
+            this.hScrollBarDIG1.LargeChange = 1;
+            this.hScrollBarDIG1.Location = new System.Drawing.Point(206, 741);
+            this.hScrollBarDIG1.Maximum = 255;
+            this.hScrollBarDIG1.Name = "hScrollBarDIG1";
+            this.hScrollBarDIG1.Size = new System.Drawing.Size(284, 20);
+            this.hScrollBarDIG1.TabIndex = 91;
+            this.hScrollBarDIG1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBarDIG1_Scroll);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1040, 972);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.hScrollBarDIG1);
+            this.Controls.Add(this.maskedTextBoxDIG1);
             this.Controls.Add(this.hScrollBarDIG0);
             this.Controls.Add(this.maskedTextBoxDIG0);
             this.Controls.Add(this.label31);
@@ -1155,7 +1170,8 @@
         private System.Windows.Forms.HScrollBar hScrollBarDIG0;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxDIG0;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxDIG1;
+        private System.Windows.Forms.HScrollBar hScrollBarDIG1;
     }
 }
 

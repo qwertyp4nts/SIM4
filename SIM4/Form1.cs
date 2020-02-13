@@ -18,23 +18,21 @@ namespace SIM4
     public partial class Form1 : Form
     {
         static MccBoard DaqBoard = new MccDaq.MccBoard(1);
-        Range range;
-        ScanOptions ScanOptions;
         int linked = 0;
         int linkedPairTwo = 0;
         int linkedThrottle = 0;
 
         int NumPorts, NumBits, FirstBit;
         int PortType, ProgAbility;
-        string PortName;
 
-        bool threadRunning = false;
+        static DigContext dig0 = new DigContext(DaqBoard, DigitalPortType.AuxPort);
+        static DigContext dig1 = new DigContext(DaqBoard, DigitalPortType.AuxPort1);
+        static DigContext dig2 = new DigContext(DaqBoard, DigitalPortType.AuxPort2);
+     //   DigContext dig3 = new DigContext(DaqBoard, DigitalPortType.AuxPort2);
 
         MccDaq.DigitalPortType PortNum;
         MccDaq.DigitalPortDirection Direction;
         clsDigitalIO DioProps = new clsDigitalIO();
-
-        StreamWriter sw = File.CreateText(AppDomain.CurrentDomain.BaseDirectory + "PulseWidthTimer.txt");
 
         public Form1()
         {
@@ -99,7 +97,7 @@ namespace SIM4
 
             //maskedTextBox6 begin
 
-            if(linkedThrottle == 1)
+            if (linkedThrottle == 1)
             {
                 sendVoltage(5, float.Parse(maskedTextBox4.Text));
                 hScrollBar6.Value = SetScrollBar(maskedTextBox4.Text);
@@ -207,15 +205,16 @@ namespace SIM4
 
             if (Regex.IsMatch(maskedTextBoxDIG0.Text, @"\d{1,3}"))
             {
-                if (threadRunning == false)
-                {
-                    //   sendDIGVal(0, float.Parse(maskedTextBoxDIG0.Text));
-                    //     TxDIG(int.Parse(maskedTextBoxDIG0.Text));
-                    int pulseWidth = int.Parse(maskedTextBoxDIG0.Text);
-                    Thread a = new Thread(() => TxDIG(pulseWidth));
-                    a.Start();
-                    hScrollBarDIG0.Value = SetScrollBar(maskedTextBoxDIG0.Text);
-                }
+                dig0.setPulseWidth(maskedTextBoxDIG0.Text);
+                    
+                hScrollBarDIG0.Value = SetScrollBar(maskedTextBoxDIG0.Text);
+            }
+
+            if (Regex.IsMatch(maskedTextBoxDIG1.Text, @"\d{1,3}"))
+            {
+                dig1.setPulseWidth(maskedTextBoxDIG1.Text);
+
+                hScrollBarDIG1.Value = SetScrollBar(maskedTextBoxDIG1.Text);
             }
 
         }
@@ -341,20 +340,24 @@ namespace SIM4
 
         private void hScrollBarDIG0_Scroll(object sender, ScrollEventArgs e)
         {
-           // string a = ((float)(hScrollBarDIG0.Value).ToString("0.000");
             maskedTextBoxDIG0.Text = hScrollBarDIG0.Value.ToString();
+        }
+
+        private void hScrollBarDIG1_Scroll(object sender, ScrollEventArgs e)
+        {
+            maskedTextBoxDIG1.Text = hScrollBarDIG1.Value.ToString();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-        //    Properties.Settings.Default.Notes1 = "";
+            //    Properties.Settings.Default.Notes1 = "";
             Properties.Settings.Default.Save();
         }
 
         private void linkButton_Click(object sender, EventArgs e)
         {
 
-            
+
 
         }
 
@@ -437,55 +440,79 @@ namespace SIM4
         {
             PortType = clsDigitalIO.PORTOUT;
             NumPorts = DioProps.FindPortsOfType(DaqBoard, PortType, out ProgAbility,
-                out PortNum, 
-                out NumBits, out FirstBit);
-
-                    Direction = MccDaq.DigitalPortDirection.DigitalOut;
-                    DaqBoard.DConfigPort(PortNum, Direction);
-
-                    DaqBoard.DOut(PortNum, (ushort)num);
-        }
-
-
-
-        private static System.Timers.Timer aTimer;
-
-        public void TxDIG(int pulseWidth)
-        {
-            threadRunning = true;
-            DateTime curr = DateTime.Now;
-
-            PortType = clsDigitalIO.PORTOUT;
-            NumPorts = DioProps.FindPortsOfType(DaqBoard, PortType, out ProgAbility,
                 out PortNum,
                 out NumBits, out FirstBit);
 
             Direction = MccDaq.DigitalPortDirection.DigitalOut;
-
             DaqBoard.DConfigPort(PortNum, Direction);
 
-            using (sw)
-            {
-
-                while ((maskedTextBoxDIG0.Text != "0") /*&& (pulseWidth == int.Parse(maskedTextBoxDIG0.Text))*/)
-                {
-                    var sleepPeriod = 255 - int.Parse(maskedTextBoxDIG0.Text);
-                    DaqBoard.DOut(PortNum, (ushort)0);
-                    Thread.Sleep(sleepPeriod);
-                    DaqBoard.DOut(PortNum, (ushort)1);
-                    Thread.Sleep(sleepPeriod);
-            //        sw.WriteLine("sleepPeriod: " + sleepPeriod + "       Timer:    " + DateTime.Now.ToString("HH:mm:ss.fff"));
-                    //#TODO Failing as soon as we change value because its opening up another thread I think. Closing one and opening another? 
-                }
-            }
-            threadRunning = false;
+            DaqBoard.DOut(PortNum, (ushort)num);
         }
 
         private void maskedTextBoxDIG0_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
         }
+        private void maskedTextBoxDIG1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
     }
+
+    public class DigContext
+    {
+        Thread m_thread = null;
+        int m_pw = 0;
+        MccDaq.DigitalPortType m_PortNum;
+        MccBoard DaqBoard = null;
+
+        public DigContext(MccBoard b, DigitalPortType p)
+        {
+            DaqBoard = b;
+            m_PortNum = p;
+
+            m_thread = new Thread(() => TxDIG());
+            m_thread.Start();
+        }
+
+        public void setPulseWidth(string s)
+        {
+            lock (this)
+            {
+                m_pw = int.Parse(s);
+            }
+        }
+
+        public void TxDIG()
+        {
+
+            var Direction = MccDaq.DigitalPortDirection.DigitalOut;
+
+            DaqBoard.DConfigPort(m_PortNum, Direction);
+
+            while (true)
+            {
+                var pw = 0;
+                lock (this)
+                {
+                    pw = m_pw;
+                }
+                var sleepPeriod = 255 - pw;
+                if (pw > 0)
+                {
+                    DaqBoard.DOut(m_PortNum, (ushort)0);
+                    Thread.Sleep(sleepPeriod);
+                    DaqBoard.DOut(m_PortNum, (ushort)1);
+                    Thread.Sleep(sleepPeriod);
+                }
+                else
+                {
+                    Thread.Sleep(1000);
+                }
+            }
+        }
+    }
+
 }
 
 /* This code works. I made it fancy now and I have no faith in my abilities, so revert to this if all hell breaks loose.
