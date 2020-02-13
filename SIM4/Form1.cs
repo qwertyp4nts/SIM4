@@ -9,6 +9,9 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MccDaq;
+using DigitalIO;
+using System.Threading;
+using System.IO;
 
 namespace SIM4
 {
@@ -21,6 +24,18 @@ namespace SIM4
         int linkedPairTwo = 0;
         int linkedThrottle = 0;
 
+        int NumPorts, NumBits, FirstBit;
+        int PortType, ProgAbility;
+        string PortName;
+
+        bool threadRunning = false;
+
+        MccDaq.DigitalPortType PortNum;
+        MccDaq.DigitalPortDirection Direction;
+        clsDigitalIO DioProps = new clsDigitalIO();
+
+        StreamWriter sw = File.CreateText(AppDomain.CurrentDomain.BaseDirectory + "PulseWidthTimer.txt");
+
         public Form1()
         {
             InitializeComponent();
@@ -28,9 +43,6 @@ namespace SIM4
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            //comboBox1.SelectedIndex = 0;
-
             if (Regex.IsMatch(maskedTextBox1.Text, @"[0-5]\.[0-9][0-9][0-9]"))
             {
                 sendVoltage(0, float.Parse(maskedTextBox1.Text));
@@ -188,6 +200,24 @@ namespace SIM4
                 sendVoltage(15, float.Parse(maskedTextBox16.Text));
                 hScrollBar16.Value = SetScrollBar(maskedTextBox16.Text);
             }
+
+
+
+            /////////////////////////////// DIG //////////////////////////////////
+
+            if (Regex.IsMatch(maskedTextBoxDIG0.Text, @"\d{1,3}"))
+            {
+                if (threadRunning == false)
+                {
+                    //   sendDIGVal(0, float.Parse(maskedTextBoxDIG0.Text));
+                    //     TxDIG(int.Parse(maskedTextBoxDIG0.Text));
+                    int pulseWidth = int.Parse(maskedTextBoxDIG0.Text);
+                    Thread a = new Thread(() => TxDIG(pulseWidth));
+                    a.Start();
+                    hScrollBarDIG0.Value = SetScrollBar(maskedTextBoxDIG0.Text);
+                }
+            }
+
         }
 
         private void maskedTextBox1_TextChanged(object sender, KeyPressEventArgs e)
@@ -309,6 +339,12 @@ namespace SIM4
             maskedTextBox16.Text = a;
         }
 
+        private void hScrollBarDIG0_Scroll(object sender, ScrollEventArgs e)
+        {
+           // string a = ((float)(hScrollBarDIG0.Value).ToString("0.000");
+            maskedTextBoxDIG0.Text = hScrollBarDIG0.Value.ToString();
+        }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
         //    Properties.Settings.Default.Notes1 = "";
@@ -395,6 +431,59 @@ namespace SIM4
                 textBox4.Text = "";
                 textBox12.Text = "";
             }
+        }
+
+        public void sendDIGVal(int pinName, float num)
+        {
+            PortType = clsDigitalIO.PORTOUT;
+            NumPorts = DioProps.FindPortsOfType(DaqBoard, PortType, out ProgAbility,
+                out PortNum, 
+                out NumBits, out FirstBit);
+
+                    Direction = MccDaq.DigitalPortDirection.DigitalOut;
+                    DaqBoard.DConfigPort(PortNum, Direction);
+
+                    DaqBoard.DOut(PortNum, (ushort)num);
+        }
+
+
+
+        private static System.Timers.Timer aTimer;
+
+        public void TxDIG(int pulseWidth)
+        {
+            threadRunning = true;
+            DateTime curr = DateTime.Now;
+
+            PortType = clsDigitalIO.PORTOUT;
+            NumPorts = DioProps.FindPortsOfType(DaqBoard, PortType, out ProgAbility,
+                out PortNum,
+                out NumBits, out FirstBit);
+
+            Direction = MccDaq.DigitalPortDirection.DigitalOut;
+
+            DaqBoard.DConfigPort(PortNum, Direction);
+
+            using (sw)
+            {
+
+                while ((maskedTextBoxDIG0.Text != "0") /*&& (pulseWidth == int.Parse(maskedTextBoxDIG0.Text))*/)
+                {
+                    var sleepPeriod = 255 - int.Parse(maskedTextBoxDIG0.Text);
+                    DaqBoard.DOut(PortNum, (ushort)0);
+                    Thread.Sleep(sleepPeriod);
+                    DaqBoard.DOut(PortNum, (ushort)1);
+                    Thread.Sleep(sleepPeriod);
+            //        sw.WriteLine("sleepPeriod: " + sleepPeriod + "       Timer:    " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                    //#TODO Failing as soon as we change value because its opening up another thread I think. Closing one and opening another? 
+                }
+            }
+            threadRunning = false;
+        }
+
+        private void maskedTextBoxDIG0_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }
