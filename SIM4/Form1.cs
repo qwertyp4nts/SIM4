@@ -21,18 +21,16 @@ namespace SIM4
         int linked = 0;
         int linkedPairTwo = 0;
         int linkedThrottle = 0;
-
+        /*
         int NumPorts, NumBits, FirstBit;
         int PortType, ProgAbility;
-
+        */
         static DigContext dig0 = new DigContext(DaqBoard, DigitalPortType.AuxPort);
         static DigContext dig1 = new DigContext(DaqBoard, DigitalPortType.AuxPort1);
         static DigContext dig2 = new DigContext(DaqBoard, DigitalPortType.AuxPort2);
      //   DigContext dig3 = new DigContext(DaqBoard, DigitalPortType.AuxPort2);
 
-        MccDaq.DigitalPortType PortNum;
-        MccDaq.DigitalPortDirection Direction;
-        clsDigitalIO DioProps = new clsDigitalIO();
+
 
         public Form1()
         {
@@ -435,9 +433,10 @@ namespace SIM4
                 textBox12.Text = "";
             }
         }
-
+        /*
         public void sendDIGVal(int pinName, float num)
         {
+
             PortType = clsDigitalIO.PORTOUT;
             NumPorts = DioProps.FindPortsOfType(DaqBoard, PortType, out ProgAbility,
                 out PortNum,
@@ -448,7 +447,7 @@ namespace SIM4
 
             DaqBoard.DOut(PortNum, (ushort)num);
         }
-
+        */
         private void maskedTextBoxDIG0_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
@@ -485,8 +484,19 @@ namespace SIM4
 
         public void TxDIG()
         {
+            MccDaq.DigitalPortType PortNum;
+            MccDaq.DigitalPortDirection Direction;
+            clsDigitalIO DioProps = new clsDigitalIO();
 
-            var Direction = MccDaq.DigitalPortDirection.DigitalOut;
+            int NumPorts, NumBits, FirstBit;
+            int PortType, ProgAbility;
+
+            PortType = clsDigitalIO.PORTOUT;
+            NumPorts = DioProps.FindPortsOfType(DaqBoard, PortType, out ProgAbility,
+                out PortNum,
+                out NumBits, out FirstBit);
+
+            Direction = MccDaq.DigitalPortDirection.DigitalOut;
 
             DaqBoard.DConfigPort(m_PortNum, Direction);
 
