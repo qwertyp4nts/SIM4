@@ -12,9 +12,29 @@ using MccDaq;
 using DigitalIO;
 using System.Threading;
 using System.IO;
+using System.Diagnostics;
 
 namespace SIM4
 {
+    public static class swExtension
+    {
+        public static void fastSleep(Stopwatch swt, int ms)
+        {
+            if (swt.IsRunning)
+            {
+                swt.Restart();
+            }
+            else
+            {
+                swt.Start();
+            }
+
+            while (swt.ElapsedMilliseconds < ms)
+            {
+                Thread.Sleep(0); // relinquish thread. Stops the thread taking all the processor
+            }
+        }
+    }
     public partial class Form1 : Form
     {
         static MccBoard DaqBoard = new MccDaq.MccBoard(1);
@@ -256,7 +276,7 @@ namespace SIM4
                     //   sendDIGVal(0, float.Parse(maskedTextBoxDIG0.Text));
                     //     TxDIG(int.Parse(maskedTextBoxDIG0.Text));
                     int pulseWidth = int.Parse(maskedTextBoxDIG0.Text);
-                    Thread a = new Thread(() => TxDIG(pulseWidth));
+                    Thread a = new Thread(() => TxDIGTest(pulseWidth));
                     a.Start();
                     hScrollBarDIG0.Value = SetScrollBar(maskedTextBoxDIG0.Text);
                 }
@@ -567,6 +587,38 @@ namespace SIM4
             }
             threadRunning = false;
         }
+
+        public void TxDIGTest(int pulseWidth)
+        {
+            threadRunning = true;
+            PortType = clsDigitalIO.PORTOUT;
+            NumPorts = DioProps.FindPortsOfType(DaqBoard, PortType, out ProgAbility,
+                out PortNum,
+                out NumBits, out FirstBit);
+
+            Direction = MccDaq.DigitalPortDirection.DigitalOut;
+
+            DaqBoard.DConfigPort(PortNum, Direction);
+            var swt = new Stopwatch();
+
+            int sleepPeriod = 0;
+            string sleepPeriodText = null;
+
+            while (maskedTextBoxDIG0.Text != "0") {
+                if ((sleepPeriodText == null) || (sleepPeriodText != maskedTextBoxDIG0.Text))
+                {
+                    sleepPeriod = 255 - int.Parse(maskedTextBoxDIG0.Text);
+                }
+                    DaqBoard.DOut(PortNum, (ushort)0);
+                    swExtension.fastSleep(swt, sleepPeriod);
+                    DaqBoard.DOut(PortNum, (ushort)1);
+                    swExtension.fastSleep(swt, sleepPeriod);
+                
+
+            }
+            threadRunning = false;
+        }
+
 
         private void maskedTextBoxDIG0_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
