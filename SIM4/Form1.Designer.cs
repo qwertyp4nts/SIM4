@@ -122,6 +122,8 @@
             this.lblHiClamp = new System.Windows.Forms.Label();
             this.txtBoxLowClamp = new System.Windows.Forms.MaskedTextBox();
             this.txtBoxHiClamp = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBoxDIG1 = new System.Windows.Forms.MaskedTextBox();
+            this.hScrollBarDIG1 = new System.Windows.Forms.HScrollBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -993,11 +995,32 @@
             this.txtBoxHiClamp.TabIndex = 93;
             this.txtBoxHiClamp.Text = "5000";
             // 
+            // maskedTextBoxDIG1
+            // 
+            this.maskedTextBoxDIG1.HidePromptOnLeave = true;
+            this.maskedTextBoxDIG1.Location = new System.Drawing.Point(80, 737);
+            this.maskedTextBoxDIG1.Mask = "000";
+            this.maskedTextBoxDIG1.Name = "maskedTextBoxDIG1";
+            this.maskedTextBoxDIG1.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBoxDIG1.TabIndex = 94;
+            this.maskedTextBoxDIG1.Text = "0";
+            // 
+            // hScrollBarDIG1
+            // 
+            this.hScrollBarDIG1.LargeChange = 1;
+            this.hScrollBarDIG1.Location = new System.Drawing.Point(206, 737);
+            this.hScrollBarDIG1.Maximum = 255;
+            this.hScrollBarDIG1.Name = "hScrollBarDIG1";
+            this.hScrollBarDIG1.Size = new System.Drawing.Size(284, 20);
+            this.hScrollBarDIG1.TabIndex = 95;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1040, 972);
+            this.Controls.Add(this.hScrollBarDIG1);
+            this.Controls.Add(this.maskedTextBoxDIG1);
             this.Controls.Add(this.txtBoxHiClamp);
             this.Controls.Add(this.txtBoxLowClamp);
             this.Controls.Add(this.lblHiClamp);
@@ -1196,6 +1219,8 @@
         private System.Windows.Forms.Label lblHiClamp;
         private System.Windows.Forms.MaskedTextBox txtBoxLowClamp;
         private System.Windows.Forms.MaskedTextBox txtBoxHiClamp;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxDIG1;
+        private System.Windows.Forms.HScrollBar hScrollBarDIG1;
     }
 }
 

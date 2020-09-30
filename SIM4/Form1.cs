@@ -16,52 +16,41 @@ using System.Diagnostics;
 
 namespace SIM4
 {
-    public static class swExtension
-    {
-        public static void fastSleep(Stopwatch swt, int ms)
-        {
-            if (swt.IsRunning)
-            {
-                swt.Restart();
-            }
-            else
-            {
-                swt.Start();
-            }
-
-            while (swt.ElapsedMilliseconds < ms)
-            {
-                Thread.Sleep(0); // relinquish thread. Stops the thread taking all the processor
-            }
-        }
-    }
     public partial class Form1 : Form
     {
         static MccBoard DaqBoard = new MccDaq.MccBoard(1);
-        Range range;
-        ScanOptions ScanOptions;
         int linked = 0;
         int linkedPairTwo = 0;
         int linkedThrottle = 0;
 
         int NumPorts, NumBits, FirstBit;
         int PortType, ProgAbility;
-        string PortName;
 
         bool threadRunning = false;
+        bool thread1Running = false;
+        bool thread2Running = false;
+        bool thread3Running = false;
+        bool thread4Running = false;
+        bool thread5Running = false;
+        bool thread6Running = false;
+        bool thread7Running = false;
+        bool thread8Running = false;
 
         int textBoxLowClampInt;
         int textBoxHiClampInt;
         int textBox4Int;
 
-     //   string[] textBoxCollection;
+        //   string[] textBoxCollection;
         string textBox1String, textBox2String, textBox3String, textBox4String, textBox5String, textBox6String, textBox7String, textBox8String, textBox9String, textBox10String, textBox11String, textBox12String, textBox13String, textBox14String, textBox15String, textBox16String;
+        string textBoxDig0String, textBoxDig1String, textBoxDig2String, textBoxDig3String, textBoxDig4String, textBoxDig5String, textBoxDig6String, textBoxDig7String;
 
         MccDaq.DigitalPortType PortNum;
         MccDaq.DigitalPortDirection Direction;
         clsDigitalIO DioProps = new clsDigitalIO();
 
         StreamWriter sw = File.CreateText(AppDomain.CurrentDomain.BaseDirectory + "PulseWidthTimer.txt");
+
+        Thread a;
 
         public Form1()
         {
@@ -70,7 +59,7 @@ namespace SIM4
 
         private void Form1_Load(object sender, EventArgs e)
         {
-        //    textBoxCollection = new String[] { textBox1String, textBox2String, textBox3String };
+            //    textBoxCollection = new String[] { textBox1String, textBox2String, textBox3String };
 
             textBoxLowClampInt = int.Parse(txtBoxLowClamp.Text.Replace(".", ""));
             textBoxHiClampInt = int.Parse(txtBoxHiClamp.Text.Replace(".", ""));
@@ -92,6 +81,16 @@ namespace SIM4
             textBox14String = maskedTextBox14.Text;
             textBox15String = maskedTextBox15.Text;
             textBox16String = maskedTextBox16.Text;
+
+            textBoxDig0String = maskedTextBoxDIG0.Text;
+            textBoxDig1String = maskedTextBoxDIG1.Text;
+
+            /*    textBoxDig2String =
+                textBoxDig2String =
+                textBoxDig2String =
+                textBoxDig2String =
+                textBoxDig2String =
+                textBoxDig2String;*/
 
 
             if (Regex.IsMatch(maskedTextBox1.Text, @"[0-5]\.[0-9][0-9][0-9]"))
@@ -163,7 +162,7 @@ namespace SIM4
 
             //maskedTextBox6 begin
 
-            if(linkedThrottle == 1)
+            if (linkedThrottle == 1)
             {
                 sendVoltage(5, float.Parse(textBox4String));
                 hScrollBar6.Value = SetScrollBar(textBox4String);
@@ -270,16 +269,31 @@ namespace SIM4
             /////////////////////////////// DIG //////////////////////////////////
 
             if (Regex.IsMatch(maskedTextBoxDIG0.Text, @"\d{1,3}"))
-            {
+            {/* ALL THIS CODE WORKS
                 if (threadRunning == false)
                 {
-                    //   sendDIGVal(0, float.Parse(maskedTextBoxDIG0.Text));
-                    //     TxDIG(int.Parse(maskedTextBoxDIG0.Text));
                     int pulseWidth = int.Parse(maskedTextBoxDIG0.Text);
-                    Thread a = new Thread(() => TxDIGTest(pulseWidth));
+                    Thread a = new Thread(() => TxDIGFast(pulseWidth));
                     a.Start();
                     hScrollBarDIG0.Value = SetScrollBar(maskedTextBoxDIG0.Text);
-                }
+                }*/
+
+                //        a = new Thread(() => 
+                digThreads.StartThread(textBoxDig0String);
+                hScrollBarDIG0.Value = SetScrollBar(maskedTextBoxDIG0.Text);
+            }
+
+            /////////////////////////////// DIG 2//////////////////////////////////
+
+            if (Regex.IsMatch(maskedTextBoxDIG1.Text, @"\d{1,3}"))
+            {
+                /*          if (thread1Running == false)
+                          {
+                              int pulseWidth = int.Parse(textBoxDig1String);
+                              Thread a = new Thread(() => TxDIGFast(pulseWidth));
+                              a.Start();
+                              hScrollBarDIG1.Value = SetScrollBar(textBoxDig1String);
+                          }*/
             }
 
         }
@@ -301,15 +315,6 @@ namespace SIM4
                 sendVoltage(3, float.Parse(txtBoxHiClamp.Text));
                 hScrollBar4.Value = SetScrollBar(txtBoxHiClamp.Text);
             }
-        }
-
-        private Boolean isWithinRange()
-        {//not user yet
-            if ((int.Parse(txtBoxLowClamp.Text.Replace(".", "")) <= int.Parse(maskedTextBox4.Text.Replace(".", ""))) && (int.Parse(txtBoxHiClamp.Text.Replace(".", "")) >= int.Parse(maskedTextBox4.Text.Replace(".", ""))))
-            {
-
-            }
-                return true;
         }
 
         public void sendVoltageAndUpdatePin(int pinNum, string boxNum)
@@ -366,7 +371,8 @@ namespace SIM4
             {
                 maskedTextBox4.Text = a;
             }
-            else if ((float)(hScrollBar4.Value) <= textBoxLowClampInt) {
+            else if ((float)(hScrollBar4.Value) <= textBoxLowClampInt)
+            {
                 maskedTextBox4.Text = txtBoxLowClamp.Text;
             }
             else if ((float)(hScrollBar4.Value) >= textBoxHiClampInt)
@@ -448,20 +454,20 @@ namespace SIM4
 
         private void hScrollBarDIG0_Scroll(object sender, ScrollEventArgs e)
         {
-           // string a = ((float)(hScrollBarDIG0.Value).ToString("0.000");
+            // string a = ((float)(hScrollBarDIG0.Value).ToString("0.000");
             maskedTextBoxDIG0.Text = hScrollBarDIG0.Value.ToString();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-        //    Properties.Settings.Default.Notes1 = "";
+            //    Properties.Settings.Default.Notes1 = "";
             Properties.Settings.Default.Save();
         }
 
         private void linkButton_Click(object sender, EventArgs e)
         {
 
-            
+
 
         }
 
@@ -544,20 +550,20 @@ namespace SIM4
         {
             PortType = clsDigitalIO.PORTOUT;
             NumPorts = DioProps.FindPortsOfType(DaqBoard, PortType, out ProgAbility,
-                out PortNum, 
+                out PortNum,
                 out NumBits, out FirstBit);
 
-                    Direction = MccDaq.DigitalPortDirection.DigitalOut;
-                    DaqBoard.DConfigPort(PortNum, Direction);
+            Direction = MccDaq.DigitalPortDirection.DigitalOut;
+            DaqBoard.DConfigPort(PortNum, Direction);
 
-                    DaqBoard.DOut(PortNum, (ushort)num);
+            DaqBoard.DOut(PortNum, (ushort)num);
         }
 
 
 
         private static System.Timers.Timer aTimer;
 
-        public void TxDIG(int pulseWidth)
+        public void TxDIGSlow(int pulseWidth)
         {
             threadRunning = true;
             DateTime curr = DateTime.Now;
@@ -581,20 +587,18 @@ namespace SIM4
                     Thread.Sleep(sleepPeriod);
                     DaqBoard.DOut(PortNum, (ushort)1);
                     Thread.Sleep(sleepPeriod);
-            //        sw.WriteLine("sleepPeriod: " + sleepPeriod + "       Timer:    " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                    //        sw.WriteLine("sleepPeriod: " + sleepPeriod + "       Timer:    " + DateTime.Now.ToString("HH:mm:ss.fff"));
                     //#TODO Failing as soon as we change value because its opening up another thread I think. Closing one and opening another? 
                 }
             }
             threadRunning = false;
         }
 
-        public void TxDIGTest(int pulseWidth)
+        public void TxDIGFast(int pulseWidth)
         {
             threadRunning = true;
             PortType = clsDigitalIO.PORTOUT;
-            NumPorts = DioProps.FindPortsOfType(DaqBoard, PortType, out ProgAbility,
-                out PortNum,
-                out NumBits, out FirstBit);
+            NumPorts = DioProps.FindPortsOfType(DaqBoard, PortType, out ProgAbility, out PortNum, out NumBits, out FirstBit);
 
             Direction = MccDaq.DigitalPortDirection.DigitalOut;
 
@@ -604,29 +608,110 @@ namespace SIM4
             int sleepPeriod = 0;
             string sleepPeriodText = null;
 
-            while (maskedTextBoxDIG0.Text != "0") {
+            while (maskedTextBoxDIG0.Text != "0")
+            {
                 if ((sleepPeriodText == null) || (sleepPeriodText != maskedTextBoxDIG0.Text))
                 {
                     sleepPeriod = 255 - int.Parse(maskedTextBoxDIG0.Text);
                 }
-                    DaqBoard.DOut(PortNum, (ushort)0);
-                    swExtension.fastSleep(swt, sleepPeriod);
-                    DaqBoard.DOut(PortNum, (ushort)1);
-                    swExtension.fastSleep(swt, sleepPeriod);
-                
+                DaqBoard.DOut(PortNum, (ushort)0);
+                swExtension.fastSleep(swt, sleepPeriod);
+                DaqBoard.DOut(PortNum, (ushort)1);
+                swExtension.fastSleep(swt, sleepPeriod);
+
 
             }
             threadRunning = false;
         }
 
 
+
+
         private void maskedTextBoxDIG0_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
         }
+
+
+        public class digThreads
+        {
+            public void threadedDigSend()
+            {
+                Thread a;
+                bool running;
+                bool stop;
+
+                running = false;
+                stop = false;
+
+                void StartThread(string textBoxString)
+                {
+                    if (running)
+                    {
+                        StopThread();
+                    }
+                    stop = false;
+                    a = new Thread(() => TxDIGTest(DigitalPortType.AuxPort, textBoxString));
+
+                    running = true;
+                }
+
+                void StopThread()
+                {
+                    stop = true;
+                    a.Join();
+                    running = false;
+                }
+
+                void TxDIGTest(DigitalPortType PortNum, string pinNum)
+                {
+                    while (stop == false)
+                    {
+                        DaqBoard.DConfigPort(PortNum, MccDaq.DigitalPortDirection.DigitalOut);
+                        var swt = new Stopwatch();
+
+                        int sleepPeriod = 0;
+                        string sleepPeriodText = null;
+
+                        while (pinNum != "0")
+                        {
+                            if ((sleepPeriodText == null) || (sleepPeriodText != pinNum))
+                            {
+                                sleepPeriod = 255 - int.Parse(pinNum);
+                            }
+                            DaqBoard.DOut(PortNum, (ushort)0);
+                            swExtension.fastSleep(swt, sleepPeriod);
+                            DaqBoard.DOut(PortNum, (ushort)1);
+                            swExtension.fastSleep(swt, sleepPeriod);
+
+                        }
+                    }
+                }
+            }
+
+        }
+
+        public static class swExtension
+        {
+            public static void fastSleep(Stopwatch swt, int ms)
+            {
+                if (swt.IsRunning)
+                {
+                    swt.Restart();
+                }
+                else
+                {
+                    swt.Start();
+                }
+
+                while (swt.ElapsedMilliseconds < ms)
+                {
+                    Thread.Sleep(0); // relinquish thread. Stops the thread taking all the processor
+                }
+            }
+        }
     }
 }
-
 /* This code works. I made it fancy now and I have no faith in my abilities, so revert to this if all hell breaks loose.
  *  if (Regex.IsMatch(maskedTextBox2.Text, @"[0-5]\.[0-9][0-9][0-9]"))
             {
