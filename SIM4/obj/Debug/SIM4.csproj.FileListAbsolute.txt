@@ -14,4 +14,5 @@ C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\bin\Debug\SIM4.exe
 C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\bin\Debug\SIM4.application
 C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Debug\SIM4.exe.manifest
 C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Debug\SIM4.application
-C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Debug\SIM4.swExtension.resources
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Debug\SIM4.Form1.resources
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\bin\Debug\App.config

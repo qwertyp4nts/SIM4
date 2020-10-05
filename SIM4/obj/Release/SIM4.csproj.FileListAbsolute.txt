@@ -15,3 +15,4 @@ C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Release\SIM4.a
 C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Release\SIM4.csproj.CopyComplete
 C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Release\SIM4.exe
 C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\obj\Release\SIM4.pdb
+C:\Users\mila\Documents\Visual Studio 2017\Projects\SIM4\SIM4\bin\Release\App.config

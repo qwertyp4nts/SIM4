@@ -1,40 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MccDaq;
 using DigitalIO;
 using System.Threading;
 using System.IO;
 using System.Diagnostics;
+using System.Configuration;
 
 namespace SIM4
 {
-    public static class swExtension
-    {
-        public static void fastSleep(Stopwatch swt, int ms)
-        {
-            if (swt.IsRunning)
-            {
-                swt.Restart();
-            }
-            else
-            {
-                swt.Start();
-            }
-
-            while (swt.ElapsedMilliseconds < ms)
-            {
-                Thread.Sleep(0); // relinquish thread. Stops the thread taking all the processor
-            }
-        }
-    }
     public partial class Form1 : Form
     {
         static MccBoard DaqBoard = new MccDaq.MccBoard(1);
@@ -54,7 +29,7 @@ namespace SIM4
         int textBoxHiClampInt;
         int textBox4Int;
 
-     //   string[] textBoxCollection;
+        //   string[] textBoxCollection;
         string textBox1String, textBox2String, textBox3String, textBox4String, textBox5String, textBox6String, textBox7String, textBox8String, textBox9String, textBox10String, textBox11String, textBox12String, textBox13String, textBox14String, textBox15String, textBox16String;
 
         MccDaq.DigitalPortType PortNum;
@@ -70,7 +45,8 @@ namespace SIM4
 
         private void Form1_Load(object sender, EventArgs e)
         {
-        //    textBoxCollection = new String[] { textBox1String, textBox2String, textBox3String };
+            testNotes();
+            //    textBoxCollection = new String[] { textBox1String, textBox2String, textBox3String };
 
             textBoxLowClampInt = int.Parse(txtBoxLowClamp.Text.Replace(".", ""));
             textBoxHiClampInt = int.Parse(txtBoxHiClamp.Text.Replace(".", ""));
@@ -163,7 +139,7 @@ namespace SIM4
 
             //maskedTextBox6 begin
 
-            if(linkedThrottle == 1)
+            if (linkedThrottle == 1)
             {
                 sendVoltage(5, float.Parse(textBox4String));
                 hScrollBar6.Value = SetScrollBar(textBox4String);
@@ -309,7 +285,7 @@ namespace SIM4
             {
 
             }
-                return true;
+            return true;
         }
 
         public void sendVoltageAndUpdatePin(int pinNum, string boxNum)
@@ -366,7 +342,8 @@ namespace SIM4
             {
                 maskedTextBox4.Text = a;
             }
-            else if ((float)(hScrollBar4.Value) <= textBoxLowClampInt) {
+            else if ((float)(hScrollBar4.Value) <= textBoxLowClampInt)
+            {
                 maskedTextBox4.Text = txtBoxLowClamp.Text;
             }
             else if ((float)(hScrollBar4.Value) >= textBoxHiClampInt)
@@ -448,20 +425,20 @@ namespace SIM4
 
         private void hScrollBarDIG0_Scroll(object sender, ScrollEventArgs e)
         {
-           // string a = ((float)(hScrollBarDIG0.Value).ToString("0.000");
+            // string a = ((float)(hScrollBarDIG0.Value).ToString("0.000");
             maskedTextBoxDIG0.Text = hScrollBarDIG0.Value.ToString();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-        //    Properties.Settings.Default.Notes1 = "";
-            Properties.Settings.Default.Save();
+            //    Properties.Settings.Default.Notes1 = "";
+            //Properties.Settings.Default.Save();
         }
 
         private void linkButton_Click(object sender, EventArgs e)
         {
 
-            
+
 
         }
 
@@ -522,10 +499,10 @@ namespace SIM4
                 comboBox2.SelectedIndex = 2;
                 comboBox1.Enabled = false;
                 comboBox2.Enabled = false;
-                textBox6.Text = "Throttle Pedal";
-                textBox5.Text = "Pedal Tracking";
-                textBox4.Text = "Throttle Servo";
-                textBox12.Text = "Servo Tracking";
+                textBox3.Text = "Throttle Pedal";
+                textBox4.Text = "Pedal Tracking";
+                textBox5.Text = "Throttle Servo";
+                textBox6.Text = "Servo Tracking";
             }
 
             if (comboBox3.SelectedIndex == 0)
@@ -533,10 +510,10 @@ namespace SIM4
                 linkedThrottle = 0;
                 comboBox1.Enabled = true;
                 comboBox2.Enabled = true;
-                textBox6.Text = "";
-                textBox5.Text = "";
+                textBox3.Text = "";
                 textBox4.Text = "";
-                textBox12.Text = "";
+                textBox5.Text = "";
+                textBox6.Text = "";
             }
         }
 
@@ -544,13 +521,13 @@ namespace SIM4
         {
             PortType = clsDigitalIO.PORTOUT;
             NumPorts = DioProps.FindPortsOfType(DaqBoard, PortType, out ProgAbility,
-                out PortNum, 
+                out PortNum,
                 out NumBits, out FirstBit);
 
-                    Direction = MccDaq.DigitalPortDirection.DigitalOut;
-                    DaqBoard.DConfigPort(PortNum, Direction);
+            Direction = MccDaq.DigitalPortDirection.DigitalOut;
+            DaqBoard.DConfigPort(PortNum, Direction);
 
-                    DaqBoard.DOut(PortNum, (ushort)num);
+            DaqBoard.DOut(PortNum, (ushort)num);
         }
 
 
@@ -581,7 +558,7 @@ namespace SIM4
                     Thread.Sleep(sleepPeriod);
                     DaqBoard.DOut(PortNum, (ushort)1);
                     Thread.Sleep(sleepPeriod);
-            //        sw.WriteLine("sleepPeriod: " + sleepPeriod + "       Timer:    " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                    //        sw.WriteLine("sleepPeriod: " + sleepPeriod + "       Timer:    " + DateTime.Now.ToString("HH:mm:ss.fff"));
                     //#TODO Failing as soon as we change value because its opening up another thread I think. Closing one and opening another? 
                 }
             }
@@ -604,16 +581,17 @@ namespace SIM4
             int sleepPeriod = 0;
             string sleepPeriodText = null;
 
-            while (maskedTextBoxDIG0.Text != "0") {
+            while (maskedTextBoxDIG0.Text != "0")
+            {
                 if ((sleepPeriodText == null) || (sleepPeriodText != maskedTextBoxDIG0.Text))
                 {
                     sleepPeriod = 255 - int.Parse(maskedTextBoxDIG0.Text);
                 }
-                    DaqBoard.DOut(PortNum, (ushort)0);
-                    swExtension.fastSleep(swt, sleepPeriod);
-                    DaqBoard.DOut(PortNum, (ushort)1);
-                    swExtension.fastSleep(swt, sleepPeriod);
-                
+                DaqBoard.DOut(PortNum, (ushort)0);
+                swExtension.fastSleep(swt, sleepPeriod);
+                DaqBoard.DOut(PortNum, (ushort)1);
+                swExtension.fastSleep(swt, sleepPeriod);
+
 
             }
             threadRunning = false;
@@ -624,21 +602,95 @@ namespace SIM4
         {
 
         }
+
+        private void saveSettingsBtn_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Notes0 = textBox0.Text;
+            Properties.Settings.Default.Notes1 = textBox1.Text;
+            Properties.Settings.Default.Notes2 = textBox2.Text;
+            Properties.Settings.Default.Notes3 = textBox3.Text;
+            Properties.Settings.Default.Notes4 = textBox4.Text;
+            Properties.Settings.Default.Notes5 = textBox5.Text;
+            Properties.Settings.Default.Notes6 = textBox6.Text;
+            Properties.Settings.Default.Notes7 = textBox7.Text;
+            Properties.Settings.Default.Notes8 = textBox8.Text;
+            Properties.Settings.Default.Notes9 = textBox9.Text;
+            Properties.Settings.Default.Notes10 = textBox10.Text;
+            Properties.Settings.Default.Notes11 = textBox11.Text;
+            Properties.Settings.Default.Notes12 = textBox12.Text;
+            Properties.Settings.Default.Notes13 = textBox13.Text;
+            Properties.Settings.Default.Notes14 = textBox14.Text;
+            Properties.Settings.Default.Notes15 = textBox15.Text;
+
+            Properties.Settings.Default.Save();
+        }
+
+        private void testNotes()
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal);
+            bool a = config.HasFile;
+            var b = config.FilePath;
+            textBox1.Text = b;
+            //var Note1settings = Properties.Settings.Default.Notes1;
+            //var c = config.AppSettings;
+
+            textBox0.Text = Properties.Settings.Default.Notes0;
+            textBox1.Text = Properties.Settings.Default.Notes1;
+            textBox2.Text = Properties.Settings.Default.Notes2; 
+            textBox3.Text = Properties.Settings.Default.Notes3; 
+            textBox4.Text = Properties.Settings.Default.Notes4; 
+            textBox5.Text = Properties.Settings.Default.Notes5; 
+            textBox6.Text = Properties.Settings.Default.Notes6; 
+            textBox7.Text = Properties.Settings.Default.Notes7; 
+            textBox8.Text = Properties.Settings.Default.Notes8; 
+            textBox9.Text = Properties.Settings.Default.Notes9;
+            textBox10.Text = Properties.Settings.Default.Notes10;
+            textBox11.Text = Properties.Settings.Default.Notes11;
+            textBox12.Text = Properties.Settings.Default.Notes12;
+            textBox13.Text = Properties.Settings.Default.Notes13;
+            textBox14.Text = Properties.Settings.Default.Notes14;
+            textBox15.Text = Properties.Settings.Default.Notes15;
+
+
+
+        }
+    }
+
+
+    /* This code works. I made it fancy now and I have no faith in my abilities, so revert to this if all hell breaks loose.
+     *  if (Regex.IsMatch(maskedTextBox2.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+                {
+                    sendVoltage(1, float.Parse(maskedTextBox2.Text));
+                    string wej = maskedTextBox1.Text.Replace(".", "");
+                    if (int.Parse(wej) > 5000)
+                    {
+                        hScrollBar1.Value = 5000;
+                    }
+                    else
+                    {
+                        hScrollBar1.Value = int.Parse(wej);
+                    }
+                }
+    */
+
+
+    public static class swExtension
+    {
+        public static void fastSleep(Stopwatch swt, int ms)
+        {
+            if (swt.IsRunning)
+            {
+                swt.Restart();
+            }
+            else
+            {
+                swt.Start();
+            }
+
+            while (swt.ElapsedMilliseconds < ms)
+            {
+                Thread.Sleep(0); // relinquish thread. Stops the thread taking all the processor
+            }
+        }
     }
 }
-
-/* This code works. I made it fancy now and I have no faith in my abilities, so revert to this if all hell breaks loose.
- *  if (Regex.IsMatch(maskedTextBox2.Text, @"[0-5]\.[0-9][0-9][0-9]"))
-            {
-                sendVoltage(1, float.Parse(maskedTextBox2.Text));
-                string wej = maskedTextBox1.Text.Replace(".", "");
-                if (int.Parse(wej) > 5000)
-                {
-                    hScrollBar1.Value = 5000;
-                }
-                else
-                {
-                    hScrollBar1.Value = int.Parse(wej);
-                }
-            }
-*/

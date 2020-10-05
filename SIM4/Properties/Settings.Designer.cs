@@ -25,7 +25,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("test")]
         public string Notes1 {
             get {
                 return ((string)(this["Notes1"]));
@@ -44,6 +44,366 @@ namespace SIM4.Properties {
             }
             set {
                 this["Notes2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Notes0 {
+            get {
+                return ((string)(this["Notes0"]));
+            }
+            set {
+                this["Notes0"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Notes3 {
+            get {
+                return ((string)(this["Notes3"]));
+            }
+            set {
+                this["Notes3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Notes4 {
+            get {
+                return ((string)(this["Notes4"]));
+            }
+            set {
+                this["Notes4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Notes5 {
+            get {
+                return ((string)(this["Notes5"]));
+            }
+            set {
+                this["Notes5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Notes6 {
+            get {
+                return ((string)(this["Notes6"]));
+            }
+            set {
+                this["Notes6"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Notes7 {
+            get {
+                return ((string)(this["Notes7"]));
+            }
+            set {
+                this["Notes7"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Notes8 {
+            get {
+                return ((string)(this["Notes8"]));
+            }
+            set {
+                this["Notes8"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Notes9 {
+            get {
+                return ((string)(this["Notes9"]));
+            }
+            set {
+                this["Notes9"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Notes10 {
+            get {
+                return ((string)(this["Notes10"]));
+            }
+            set {
+                this["Notes10"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Notes11 {
+            get {
+                return ((string)(this["Notes11"]));
+            }
+            set {
+                this["Notes11"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Notes12 {
+            get {
+                return ((string)(this["Notes12"]));
+            }
+            set {
+                this["Notes12"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Notes13 {
+            get {
+                return ((string)(this["Notes13"]));
+            }
+            set {
+                this["Notes13"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Notes14 {
+            get {
+                return ((string)(this["Notes14"]));
+            }
+            set {
+                this["Notes14"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Notes15 {
+            get {
+                return ((string)(this["Notes15"]));
+            }
+            set {
+                this["Notes15"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Voltage0 {
+            get {
+                return ((string)(this["Voltage0"]));
+            }
+            set {
+                this["Voltage0"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Voltage1 {
+            get {
+                return ((string)(this["Voltage1"]));
+            }
+            set {
+                this["Voltage1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Voltage2 {
+            get {
+                return ((string)(this["Voltage2"]));
+            }
+            set {
+                this["Voltage2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Voltage3 {
+            get {
+                return ((string)(this["Voltage3"]));
+            }
+            set {
+                this["Voltage3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Voltage4 {
+            get {
+                return ((string)(this["Voltage4"]));
+            }
+            set {
+                this["Voltage4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Voltage5 {
+            get {
+                return ((string)(this["Voltage5"]));
+            }
+            set {
+                this["Voltage5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Voltage6 {
+            get {
+                return ((string)(this["Voltage6"]));
+            }
+            set {
+                this["Voltage6"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Voltage7 {
+            get {
+                return ((string)(this["Voltage7"]));
+            }
+            set {
+                this["Voltage7"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Voltage8 {
+            get {
+                return ((string)(this["Voltage8"]));
+            }
+            set {
+                this["Voltage8"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Voltage9 {
+            get {
+                return ((string)(this["Voltage9"]));
+            }
+            set {
+                this["Voltage9"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Voltage10 {
+            get {
+                return ((string)(this["Voltage10"]));
+            }
+            set {
+                this["Voltage10"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Voltage11 {
+            get {
+                return ((string)(this["Voltage11"]));
+            }
+            set {
+                this["Voltage11"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Voltage12 {
+            get {
+                return ((string)(this["Voltage12"]));
+            }
+            set {
+                this["Voltage12"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Voltage13 {
+            get {
+                return ((string)(this["Voltage13"]));
+            }
+            set {
+                this["Voltage13"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Voltage14 {
+            get {
+                return ((string)(this["Voltage14"]));
+            }
+            set {
+                this["Voltage14"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Voltage15 {
+            get {
+                return ((string)(this["Voltage15"]));
+            }
+            set {
+                this["Voltage15"] = value;
             }
         }
     }
