@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SIM4.exe" size="56240">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SIM4.exe" size="55728">
       <assemblyIdentity name="SIM4" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>mS02vsGZf5GhTsigx5RKXbOW7sTzJrLSLp6UJSNky/M=</dsig:DigestValue>
+        <dsig:DigestValue>QBeRdmHcNO0MVUcR+EKdsctrwcH08ompwh1sVeZPb5s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

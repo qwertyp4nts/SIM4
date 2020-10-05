@@ -36,7 +36,8 @@ namespace SIM4
         MccDaq.DigitalPortDirection Direction;
         clsDigitalIO DioProps = new clsDigitalIO();
 
-        StreamWriter sw = File.CreateText(AppDomain.CurrentDomain.BaseDirectory + "PulseWidthTimer.txt");
+        //   StreamWriter sw = File.CreateText(AppDomain.CurrentDomain.BaseDirectory + "PulseWidthTimer.txt");
+        //   #TODO can't write to Program Files without Admin privilege. Write to AppData or MyDocs instead
 
         public Form1()
         {
@@ -534,7 +535,7 @@ namespace SIM4
 
         private static System.Timers.Timer aTimer;
 
-        public void TxDIG(int pulseWidth)
+    /*    public void TxDIG(int pulseWidth)
         {
             threadRunning = true;
             DateTime curr = DateTime.Now;
@@ -551,7 +552,7 @@ namespace SIM4
             using (sw)
             {
 
-                while ((maskedTextBoxDIG0.Text != "0") /*&& (pulseWidth == int.Parse(maskedTextBoxDIG0.Text))*/)
+                while ((maskedTextBoxDIG0.Text != "0"))
                 {
                     var sleepPeriod = 255 - int.Parse(maskedTextBoxDIG0.Text);
                     DaqBoard.DOut(PortNum, (ushort)0);
@@ -563,7 +564,7 @@ namespace SIM4
                 }
             }
             threadRunning = false;
-        }
+        }*/
 
         public void TxDIGTest(int pulseWidth)
         {
@@ -633,24 +634,29 @@ namespace SIM4
             textBox1.Text = b;
             //var Note1settings = Properties.Settings.Default.Notes1;
             //var c = config.AppSettings;
-
-            textBox0.Text = Properties.Settings.Default.Notes0;
-            textBox1.Text = Properties.Settings.Default.Notes1;
-            textBox2.Text = Properties.Settings.Default.Notes2; 
-            textBox3.Text = Properties.Settings.Default.Notes3; 
-            textBox4.Text = Properties.Settings.Default.Notes4; 
-            textBox5.Text = Properties.Settings.Default.Notes5; 
-            textBox6.Text = Properties.Settings.Default.Notes6; 
-            textBox7.Text = Properties.Settings.Default.Notes7; 
-            textBox8.Text = Properties.Settings.Default.Notes8; 
-            textBox9.Text = Properties.Settings.Default.Notes9;
-            textBox10.Text = Properties.Settings.Default.Notes10;
-            textBox11.Text = Properties.Settings.Default.Notes11;
-            textBox12.Text = Properties.Settings.Default.Notes12;
-            textBox13.Text = Properties.Settings.Default.Notes13;
-            textBox14.Text = Properties.Settings.Default.Notes14;
-            textBox15.Text = Properties.Settings.Default.Notes15;
-
+            try
+            {
+                textBox0.Text = Properties.Settings.Default.Notes0;
+                textBox1.Text = Properties.Settings.Default.Notes1;
+                textBox2.Text = Properties.Settings.Default.Notes2;
+                textBox3.Text = Properties.Settings.Default.Notes3;
+                textBox4.Text = Properties.Settings.Default.Notes4;
+                textBox5.Text = Properties.Settings.Default.Notes5;
+                textBox6.Text = Properties.Settings.Default.Notes6;
+                textBox7.Text = Properties.Settings.Default.Notes7;
+                textBox8.Text = Properties.Settings.Default.Notes8;
+                textBox9.Text = Properties.Settings.Default.Notes9;
+                textBox10.Text = Properties.Settings.Default.Notes10;
+                textBox11.Text = Properties.Settings.Default.Notes11;
+                textBox12.Text = Properties.Settings.Default.Notes12;
+                textBox13.Text = Properties.Settings.Default.Notes13;
+                textBox14.Text = Properties.Settings.Default.Notes14;
+                textBox15.Text = Properties.Settings.Default.Notes15;
+            }
+            catch (Exception e)
+            {
+                //all good
+            }
 
 
         }
