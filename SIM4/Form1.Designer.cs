@@ -30,27 +30,27 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.volt0 = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.volt1 = new System.Windows.Forms.MaskedTextBox();
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.hScrollBar2 = new System.Windows.Forms.HScrollBar();
             this.label3 = new System.Windows.Forms.Label();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            this.volt2 = new System.Windows.Forms.MaskedTextBox();
             this.hScrollBar3 = new System.Windows.Forms.HScrollBar();
-            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox6 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox7 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox8 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox9 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox10 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox11 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox12 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox13 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox14 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox15 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox16 = new System.Windows.Forms.MaskedTextBox();
+            this.volt3 = new System.Windows.Forms.MaskedTextBox();
+            this.volt4 = new System.Windows.Forms.MaskedTextBox();
+            this.volt5 = new System.Windows.Forms.MaskedTextBox();
+            this.volt6 = new System.Windows.Forms.MaskedTextBox();
+            this.volt7 = new System.Windows.Forms.MaskedTextBox();
+            this.volt8 = new System.Windows.Forms.MaskedTextBox();
+            this.volt9 = new System.Windows.Forms.MaskedTextBox();
+            this.volt10 = new System.Windows.Forms.MaskedTextBox();
+            this.volt11 = new System.Windows.Forms.MaskedTextBox();
+            this.volt12 = new System.Windows.Forms.MaskedTextBox();
+            this.volt13 = new System.Windows.Forms.MaskedTextBox();
+            this.volt14 = new System.Windows.Forms.MaskedTextBox();
+            this.volt15 = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -122,10 +122,10 @@
             this.lblHiClamp = new System.Windows.Forms.Label();
             this.txtBoxLowClamp = new System.Windows.Forms.MaskedTextBox();
             this.txtBoxHiClamp = new System.Windows.Forms.MaskedTextBox();
-            this.saveSettingsBtn = new System.Windows.Forms.Button();
             this.label32 = new System.Windows.Forms.Label();
             this.headingLbl = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -141,16 +141,16 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "VOUT0";
             // 
-            // maskedTextBox1
+            // volt0
             // 
-            this.maskedTextBox1.HidePromptOnLeave = true;
-            this.maskedTextBox1.Location = new System.Drawing.Point(80, 85);
-            this.maskedTextBox1.Mask = "0.000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox1.TabIndex = 2;
-            this.maskedTextBox1.Text = "0000";
-            this.maskedTextBox1.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.volt0.HidePromptOnLeave = true;
+            this.volt0.Location = new System.Drawing.Point(80, 85);
+            this.volt0.Mask = "0.000";
+            this.volt0.Name = "volt0";
+            this.volt0.Size = new System.Drawing.Size(100, 20);
+            this.volt0.TabIndex = 2;
+            this.volt0.Text = "0000";
+            this.volt0.TextChanged += new System.EventHandler(this.Form1_Load);
             // 
             // label2
             // 
@@ -161,16 +161,16 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "VOUT1";
             // 
-            // maskedTextBox2
+            // volt1
             // 
-            this.maskedTextBox2.HidePromptOnLeave = true;
-            this.maskedTextBox2.Location = new System.Drawing.Point(80, 122);
-            this.maskedTextBox2.Mask = "0.000";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox2.TabIndex = 4;
-            this.maskedTextBox2.Text = "0000";
-            this.maskedTextBox2.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.volt1.HidePromptOnLeave = true;
+            this.volt1.Location = new System.Drawing.Point(80, 122);
+            this.volt1.Mask = "0.000";
+            this.volt1.Name = "volt1";
+            this.volt1.Size = new System.Drawing.Size(100, 20);
+            this.volt1.TabIndex = 4;
+            this.volt1.Text = "0000";
+            this.volt1.TextChanged += new System.EventHandler(this.Form1_Load);
             // 
             // hScrollBar1
             // 
@@ -199,16 +199,16 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "VOUT2";
             // 
-            // maskedTextBox3
+            // volt2
             // 
-            this.maskedTextBox3.HidePromptOnLeave = true;
-            this.maskedTextBox3.Location = new System.Drawing.Point(80, 159);
-            this.maskedTextBox3.Mask = "0.000";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox3.TabIndex = 8;
-            this.maskedTextBox3.Text = "0000";
-            this.maskedTextBox3.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.volt2.HidePromptOnLeave = true;
+            this.volt2.Location = new System.Drawing.Point(80, 159);
+            this.volt2.Mask = "0.000";
+            this.volt2.Name = "volt2";
+            this.volt2.Size = new System.Drawing.Size(100, 20);
+            this.volt2.TabIndex = 8;
+            this.volt2.Text = "0000";
+            this.volt2.TextChanged += new System.EventHandler(this.Form1_Load);
             // 
             // hScrollBar3
             // 
@@ -219,148 +219,148 @@
             this.hScrollBar3.TabIndex = 9;
             this.hScrollBar3.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar3_Scroll);
             // 
-            // maskedTextBox4
+            // volt3
             // 
-            this.maskedTextBox4.HidePromptOnLeave = true;
-            this.maskedTextBox4.Location = new System.Drawing.Point(80, 196);
-            this.maskedTextBox4.Mask = "0.000";
-            this.maskedTextBox4.Name = "maskedTextBox4";
-            this.maskedTextBox4.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox4.TabIndex = 10;
-            this.maskedTextBox4.Text = "0000";
-            this.maskedTextBox4.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.volt3.HidePromptOnLeave = true;
+            this.volt3.Location = new System.Drawing.Point(80, 196);
+            this.volt3.Mask = "0.000";
+            this.volt3.Name = "volt3";
+            this.volt3.Size = new System.Drawing.Size(100, 20);
+            this.volt3.TabIndex = 10;
+            this.volt3.Text = "0000";
+            this.volt3.TextChanged += new System.EventHandler(this.Form1_Load);
             // 
-            // maskedTextBox5
+            // volt4
             // 
-            this.maskedTextBox5.HidePromptOnLeave = true;
-            this.maskedTextBox5.Location = new System.Drawing.Point(80, 233);
-            this.maskedTextBox5.Mask = "0.000";
-            this.maskedTextBox5.Name = "maskedTextBox5";
-            this.maskedTextBox5.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox5.TabIndex = 11;
-            this.maskedTextBox5.Text = "0000";
-            this.maskedTextBox5.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.volt4.HidePromptOnLeave = true;
+            this.volt4.Location = new System.Drawing.Point(80, 233);
+            this.volt4.Mask = "0.000";
+            this.volt4.Name = "volt4";
+            this.volt4.Size = new System.Drawing.Size(100, 20);
+            this.volt4.TabIndex = 11;
+            this.volt4.Text = "0000";
+            this.volt4.TextChanged += new System.EventHandler(this.Form1_Load);
             // 
-            // maskedTextBox6
+            // volt5
             // 
-            this.maskedTextBox6.HidePromptOnLeave = true;
-            this.maskedTextBox6.Location = new System.Drawing.Point(80, 270);
-            this.maskedTextBox6.Mask = "0.000";
-            this.maskedTextBox6.Name = "maskedTextBox6";
-            this.maskedTextBox6.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox6.TabIndex = 12;
-            this.maskedTextBox6.Text = "0000";
-            this.maskedTextBox6.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.volt5.HidePromptOnLeave = true;
+            this.volt5.Location = new System.Drawing.Point(80, 270);
+            this.volt5.Mask = "0.000";
+            this.volt5.Name = "volt5";
+            this.volt5.Size = new System.Drawing.Size(100, 20);
+            this.volt5.TabIndex = 12;
+            this.volt5.Text = "0000";
+            this.volt5.TextChanged += new System.EventHandler(this.Form1_Load);
             // 
-            // maskedTextBox7
+            // volt6
             // 
-            this.maskedTextBox7.HidePromptOnLeave = true;
-            this.maskedTextBox7.Location = new System.Drawing.Point(80, 308);
-            this.maskedTextBox7.Mask = "0.000";
-            this.maskedTextBox7.Name = "maskedTextBox7";
-            this.maskedTextBox7.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox7.TabIndex = 13;
-            this.maskedTextBox7.Text = "0000";
-            this.maskedTextBox7.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.volt6.HidePromptOnLeave = true;
+            this.volt6.Location = new System.Drawing.Point(80, 308);
+            this.volt6.Mask = "0.000";
+            this.volt6.Name = "volt6";
+            this.volt6.Size = new System.Drawing.Size(100, 20);
+            this.volt6.TabIndex = 13;
+            this.volt6.Text = "0000";
+            this.volt6.TextChanged += new System.EventHandler(this.Form1_Load);
             // 
-            // maskedTextBox8
+            // volt7
             // 
-            this.maskedTextBox8.HidePromptOnLeave = true;
-            this.maskedTextBox8.Location = new System.Drawing.Point(80, 346);
-            this.maskedTextBox8.Mask = "0.000";
-            this.maskedTextBox8.Name = "maskedTextBox8";
-            this.maskedTextBox8.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox8.TabIndex = 14;
-            this.maskedTextBox8.Text = "0000";
-            this.maskedTextBox8.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.volt7.HidePromptOnLeave = true;
+            this.volt7.Location = new System.Drawing.Point(80, 346);
+            this.volt7.Mask = "0.000";
+            this.volt7.Name = "volt7";
+            this.volt7.Size = new System.Drawing.Size(100, 20);
+            this.volt7.TabIndex = 14;
+            this.volt7.Text = "0000";
+            this.volt7.TextChanged += new System.EventHandler(this.Form1_Load);
             // 
-            // maskedTextBox9
+            // volt8
             // 
-            this.maskedTextBox9.HidePromptOnLeave = true;
-            this.maskedTextBox9.Location = new System.Drawing.Point(80, 384);
-            this.maskedTextBox9.Mask = "0.000";
-            this.maskedTextBox9.Name = "maskedTextBox9";
-            this.maskedTextBox9.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox9.TabIndex = 15;
-            this.maskedTextBox9.Text = "0000";
-            this.maskedTextBox9.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.volt8.HidePromptOnLeave = true;
+            this.volt8.Location = new System.Drawing.Point(80, 384);
+            this.volt8.Mask = "0.000";
+            this.volt8.Name = "volt8";
+            this.volt8.Size = new System.Drawing.Size(100, 20);
+            this.volt8.TabIndex = 15;
+            this.volt8.Text = "0000";
+            this.volt8.TextChanged += new System.EventHandler(this.Form1_Load);
             // 
-            // maskedTextBox10
+            // volt9
             // 
-            this.maskedTextBox10.HidePromptOnLeave = true;
-            this.maskedTextBox10.Location = new System.Drawing.Point(80, 422);
-            this.maskedTextBox10.Mask = "0.000";
-            this.maskedTextBox10.Name = "maskedTextBox10";
-            this.maskedTextBox10.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox10.TabIndex = 16;
-            this.maskedTextBox10.Text = "0000";
-            this.maskedTextBox10.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.volt9.HidePromptOnLeave = true;
+            this.volt9.Location = new System.Drawing.Point(80, 422);
+            this.volt9.Mask = "0.000";
+            this.volt9.Name = "volt9";
+            this.volt9.Size = new System.Drawing.Size(100, 20);
+            this.volt9.TabIndex = 16;
+            this.volt9.Text = "0000";
+            this.volt9.TextChanged += new System.EventHandler(this.Form1_Load);
             // 
-            // maskedTextBox11
+            // volt10
             // 
-            this.maskedTextBox11.HidePromptOnLeave = true;
-            this.maskedTextBox11.Location = new System.Drawing.Point(80, 460);
-            this.maskedTextBox11.Mask = "0.000";
-            this.maskedTextBox11.Name = "maskedTextBox11";
-            this.maskedTextBox11.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox11.TabIndex = 17;
-            this.maskedTextBox11.Text = "0000";
-            this.maskedTextBox11.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.volt10.HidePromptOnLeave = true;
+            this.volt10.Location = new System.Drawing.Point(80, 460);
+            this.volt10.Mask = "0.000";
+            this.volt10.Name = "volt10";
+            this.volt10.Size = new System.Drawing.Size(100, 20);
+            this.volt10.TabIndex = 17;
+            this.volt10.Text = "0000";
+            this.volt10.TextChanged += new System.EventHandler(this.Form1_Load);
             // 
-            // maskedTextBox12
+            // volt11
             // 
-            this.maskedTextBox12.HidePromptOnLeave = true;
-            this.maskedTextBox12.Location = new System.Drawing.Point(80, 499);
-            this.maskedTextBox12.Mask = "0.000";
-            this.maskedTextBox12.Name = "maskedTextBox12";
-            this.maskedTextBox12.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox12.TabIndex = 18;
-            this.maskedTextBox12.Text = "0000";
-            this.maskedTextBox12.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.volt11.HidePromptOnLeave = true;
+            this.volt11.Location = new System.Drawing.Point(80, 499);
+            this.volt11.Mask = "0.000";
+            this.volt11.Name = "volt11";
+            this.volt11.Size = new System.Drawing.Size(100, 20);
+            this.volt11.TabIndex = 18;
+            this.volt11.Text = "0000";
+            this.volt11.TextChanged += new System.EventHandler(this.Form1_Load);
             // 
-            // maskedTextBox13
+            // volt12
             // 
-            this.maskedTextBox13.HidePromptOnLeave = true;
-            this.maskedTextBox13.Location = new System.Drawing.Point(80, 537);
-            this.maskedTextBox13.Mask = "0.000";
-            this.maskedTextBox13.Name = "maskedTextBox13";
-            this.maskedTextBox13.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox13.TabIndex = 19;
-            this.maskedTextBox13.Text = "0000";
-            this.maskedTextBox13.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.volt12.HidePromptOnLeave = true;
+            this.volt12.Location = new System.Drawing.Point(80, 537);
+            this.volt12.Mask = "0.000";
+            this.volt12.Name = "volt12";
+            this.volt12.Size = new System.Drawing.Size(100, 20);
+            this.volt12.TabIndex = 19;
+            this.volt12.Text = "0000";
+            this.volt12.TextChanged += new System.EventHandler(this.Form1_Load);
             // 
-            // maskedTextBox14
+            // volt13
             // 
-            this.maskedTextBox14.HidePromptOnLeave = true;
-            this.maskedTextBox14.Location = new System.Drawing.Point(80, 576);
-            this.maskedTextBox14.Mask = "0.000";
-            this.maskedTextBox14.Name = "maskedTextBox14";
-            this.maskedTextBox14.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox14.TabIndex = 20;
-            this.maskedTextBox14.Text = "0000";
-            this.maskedTextBox14.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.volt13.HidePromptOnLeave = true;
+            this.volt13.Location = new System.Drawing.Point(80, 576);
+            this.volt13.Mask = "0.000";
+            this.volt13.Name = "volt13";
+            this.volt13.Size = new System.Drawing.Size(100, 20);
+            this.volt13.TabIndex = 20;
+            this.volt13.Text = "0000";
+            this.volt13.TextChanged += new System.EventHandler(this.Form1_Load);
             // 
-            // maskedTextBox15
+            // volt14
             // 
-            this.maskedTextBox15.HidePromptOnLeave = true;
-            this.maskedTextBox15.Location = new System.Drawing.Point(80, 614);
-            this.maskedTextBox15.Mask = "0.000";
-            this.maskedTextBox15.Name = "maskedTextBox15";
-            this.maskedTextBox15.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox15.TabIndex = 21;
-            this.maskedTextBox15.Text = "0000";
-            this.maskedTextBox15.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.volt14.HidePromptOnLeave = true;
+            this.volt14.Location = new System.Drawing.Point(80, 614);
+            this.volt14.Mask = "0.000";
+            this.volt14.Name = "volt14";
+            this.volt14.Size = new System.Drawing.Size(100, 20);
+            this.volt14.TabIndex = 21;
+            this.volt14.Text = "0000";
+            this.volt14.TextChanged += new System.EventHandler(this.Form1_Load);
             // 
-            // maskedTextBox16
+            // volt15
             // 
-            this.maskedTextBox16.HidePromptOnLeave = true;
-            this.maskedTextBox16.Location = new System.Drawing.Point(80, 653);
-            this.maskedTextBox16.Mask = "0.000";
-            this.maskedTextBox16.Name = "maskedTextBox16";
-            this.maskedTextBox16.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox16.TabIndex = 22;
-            this.maskedTextBox16.Text = "0000";
-            this.maskedTextBox16.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.volt15.HidePromptOnLeave = true;
+            this.volt15.Location = new System.Drawing.Point(80, 653);
+            this.volt15.Mask = "0.000";
+            this.volt15.Name = "volt15";
+            this.volt15.Size = new System.Drawing.Size(100, 20);
+            this.volt15.TabIndex = 22;
+            this.volt15.Text = "0000";
+            this.volt15.TextChanged += new System.EventHandler(this.Form1_Load);
             // 
             // label4
             // 
@@ -997,16 +997,6 @@
             this.txtBoxHiClamp.TabIndex = 93;
             this.txtBoxHiClamp.Text = "5000";
             // 
-            // saveSettingsBtn
-            // 
-            this.saveSettingsBtn.Location = new System.Drawing.Point(903, 37);
-            this.saveSettingsBtn.Name = "saveSettingsBtn";
-            this.saveSettingsBtn.Size = new System.Drawing.Size(100, 23);
-            this.saveSettingsBtn.TabIndex = 94;
-            this.saveSettingsBtn.Text = "Save Settings";
-            this.saveSettingsBtn.UseVisualStyleBackColor = true;
-            this.saveSettingsBtn.Click += new System.EventHandler(this.saveSettingsBtn_Click);
-            // 
             // label32
             // 
             this.label32.AutoSize = true;
@@ -1038,11 +1028,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1040, 744);
+            this.ClientSize = new System.Drawing.Size(1040, 746);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.headingLbl);
             this.Controls.Add(this.label32);
-            this.Controls.Add(this.saveSettingsBtn);
             this.Controls.Add(this.txtBoxHiClamp);
             this.Controls.Add(this.txtBoxLowClamp);
             this.Controls.Add(this.lblHiClamp);
@@ -1113,30 +1102,31 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.maskedTextBox16);
-            this.Controls.Add(this.maskedTextBox15);
-            this.Controls.Add(this.maskedTextBox14);
-            this.Controls.Add(this.maskedTextBox13);
-            this.Controls.Add(this.maskedTextBox12);
-            this.Controls.Add(this.maskedTextBox11);
-            this.Controls.Add(this.maskedTextBox10);
-            this.Controls.Add(this.maskedTextBox9);
-            this.Controls.Add(this.maskedTextBox8);
-            this.Controls.Add(this.maskedTextBox7);
-            this.Controls.Add(this.maskedTextBox6);
-            this.Controls.Add(this.maskedTextBox5);
-            this.Controls.Add(this.maskedTextBox4);
+            this.Controls.Add(this.volt15);
+            this.Controls.Add(this.volt14);
+            this.Controls.Add(this.volt13);
+            this.Controls.Add(this.volt12);
+            this.Controls.Add(this.volt11);
+            this.Controls.Add(this.volt10);
+            this.Controls.Add(this.volt9);
+            this.Controls.Add(this.volt8);
+            this.Controls.Add(this.volt7);
+            this.Controls.Add(this.volt6);
+            this.Controls.Add(this.volt5);
+            this.Controls.Add(this.volt4);
+            this.Controls.Add(this.volt3);
             this.Controls.Add(this.hScrollBar3);
-            this.Controls.Add(this.maskedTextBox3);
+            this.Controls.Add(this.volt2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.hScrollBar2);
             this.Controls.Add(this.hScrollBar1);
-            this.Controls.Add(this.maskedTextBox2);
+            this.Controls.Add(this.volt1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.volt0);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "SIM4";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -1149,27 +1139,27 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox volt0;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.MaskedTextBox volt1;
         private System.Windows.Forms.HScrollBar hScrollBar1;
         private System.Windows.Forms.HScrollBar hScrollBar2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
+        private System.Windows.Forms.MaskedTextBox volt2;
         private System.Windows.Forms.HScrollBar hScrollBar3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox4;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox5;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox6;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox7;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox8;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox9;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox10;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox11;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox12;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox13;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox14;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox15;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox16;
+        private System.Windows.Forms.MaskedTextBox volt3;
+        private System.Windows.Forms.MaskedTextBox volt4;
+        private System.Windows.Forms.MaskedTextBox volt5;
+        private System.Windows.Forms.MaskedTextBox volt6;
+        private System.Windows.Forms.MaskedTextBox volt7;
+        private System.Windows.Forms.MaskedTextBox volt8;
+        private System.Windows.Forms.MaskedTextBox volt9;
+        private System.Windows.Forms.MaskedTextBox volt10;
+        private System.Windows.Forms.MaskedTextBox volt11;
+        private System.Windows.Forms.MaskedTextBox volt12;
+        private System.Windows.Forms.MaskedTextBox volt13;
+        private System.Windows.Forms.MaskedTextBox volt14;
+        private System.Windows.Forms.MaskedTextBox volt15;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -1241,10 +1231,10 @@
         private System.Windows.Forms.Label lblHiClamp;
         private System.Windows.Forms.MaskedTextBox txtBoxLowClamp;
         private System.Windows.Forms.MaskedTextBox txtBoxHiClamp;
-        private System.Windows.Forms.Button saveSettingsBtn;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label headingLbl;
         private System.Windows.Forms.TextBox textBox2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

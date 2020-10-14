@@ -54,24 +54,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SIM4.exe" size="55728">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SIM4.exe" size="55216">
       <assemblyIdentity name="SIM4" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>QBeRdmHcNO0MVUcR+EKdsctrwcH08ompwh1sVeZPb5s=</dsig:DigestValue>
+        <dsig:DigestValue>iZarU78WsWYJlmRA10aaVbzmVUWS+GNUfSW7f7Z3M44=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="SIM4.exe.config" size="4327">
+  <file name="SIM4.exe.config" size="4338">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>4KLt2YHGwr/pRh/y4fGBVqx0SdbZ+lZdpfJWXWr7sBU=</dsig:DigestValue>
+      <dsig:DigestValue>P2h0GkubonmTIC+chLQCOB6jjkdLPFFs3MsTjKspNtU=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

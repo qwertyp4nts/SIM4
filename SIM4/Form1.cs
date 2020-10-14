@@ -13,15 +13,14 @@ namespace SIM4
     public partial class Form1 : Form
     {
         static MccBoard DaqBoard = new MccDaq.MccBoard(1);
-        Range range;
-        ScanOptions ScanOptions;
+
         int linked = 0;
         int linkedPairTwo = 0;
         int linkedThrottle = 0;
 
+
         int NumPorts, NumBits, FirstBit;
         int PortType, ProgAbility;
-        string PortName;
 
         bool threadRunning = false;
 
@@ -29,7 +28,6 @@ namespace SIM4
         int textBoxHiClampInt;
         int textBox4Int;
 
-        //   string[] textBoxCollection;
         string textBox1String, textBox2String, textBox3String, textBox4String, textBox5String, textBox6String, textBox7String, textBox8String, textBox9String, textBox10String, textBox11String, textBox12String, textBox13String, textBox14String, textBox15String, textBox16String;
 
         MccDaq.DigitalPortType PortNum;
@@ -42,54 +40,53 @@ namespace SIM4
         public Form1()
         {
             InitializeComponent();
+            loadSettings();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            testNotes();
             //    textBoxCollection = new String[] { textBox1String, textBox2String, textBox3String };
 
             textBoxLowClampInt = int.Parse(txtBoxLowClamp.Text.Replace(".", ""));
             textBoxHiClampInt = int.Parse(txtBoxHiClamp.Text.Replace(".", ""));
-            textBox4Int = int.Parse(maskedTextBox4.Text.Replace(".", ""));
+            textBox4Int = int.Parse(volt3.Text.Replace(".", ""));
 
-            textBox1String = maskedTextBox1.Text;
-            textBox2String = maskedTextBox2.Text;
-            textBox3String = maskedTextBox3.Text;
-            textBox4String = maskedTextBox4.Text;
-            textBox5String = maskedTextBox5.Text;
-            textBox6String = maskedTextBox6.Text;
-            textBox7String = maskedTextBox7.Text;
-            textBox8String = maskedTextBox8.Text;
-            textBox9String = maskedTextBox9.Text;
-            textBox10String = maskedTextBox10.Text;
-            textBox11String = maskedTextBox11.Text;
-            textBox12String = maskedTextBox12.Text;
-            textBox13String = maskedTextBox13.Text;
-            textBox14String = maskedTextBox14.Text;
-            textBox15String = maskedTextBox15.Text;
-            textBox16String = maskedTextBox16.Text;
+            textBox1String = volt0.Text;
+            textBox2String = volt1.Text;
+            textBox3String = volt2.Text;
+            textBox4String = volt3.Text;
+            textBox5String = volt4.Text;
+            textBox6String = volt5.Text;
+            textBox7String = volt6.Text;
+            textBox8String = volt7.Text;
+            textBox9String = volt8.Text;
+            textBox10String = volt9.Text;
+            textBox11String = volt10.Text;
+            textBox12String = volt11.Text;
+            textBox13String = volt12.Text;
+            textBox14String = volt13.Text;
+            textBox15String = volt14.Text;
+            textBox16String = volt15.Text;
 
-
-            if (Regex.IsMatch(maskedTextBox1.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+            if (Regex.IsMatch(volt0.Text, @"[0-5]\.[0-9][0-9][0-9]"))
             {
                 sendVoltageAndUpdatePin(0, textBox1String);
                 hScrollBar1.Value = SetScrollBar(textBox1String);
             }
 
-            if (Regex.IsMatch(maskedTextBox2.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+            if (Regex.IsMatch(volt1.Text, @"[0-5]\.[0-9][0-9][0-9]"))
             {
                 sendVoltageAndUpdatePin(1, textBox2String);
                 hScrollBar2.Value = SetScrollBar(textBox2String);
             }
 
-            if (Regex.IsMatch(maskedTextBox3.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+            if (Regex.IsMatch(volt2.Text, @"[0-5]\.[0-9][0-9][0-9]"))
             {
                 sendVoltageAndUpdatePin(2, textBox3String);
                 hScrollBar3.Value = SetScrollBar(textBox3String);
             }
 
-            if (Regex.IsMatch(maskedTextBox4.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+            if (Regex.IsMatch(volt3.Text, @"[0-5]\.[0-9][0-9][0-9]"))
             {
                 if ((textBoxLowClampInt <= textBox4Int) && (textBoxHiClampInt >= textBox4Int))
                 {
@@ -113,7 +110,7 @@ namespace SIM4
             {
                 sendVoltage(4, float.Parse(textBox4String));
                 hScrollBar5.Value = SetScrollBar(textBox4String);
-                maskedTextBox5.Text = textBox4String;
+                volt4.Text = textBox4String;
             }
 
             if (linked == 2)
@@ -123,12 +120,12 @@ namespace SIM4
 
                 sendVoltage(4, float.Parse(invertedVal.ToString()));
                 hScrollBar5.Value = SetScrollBar(invertedVal.ToString());
-                maskedTextBox5.Text = invertedVal.ToString();
+                volt4.Text = invertedVal.ToString();
             }
 
             if (linked == 0)
             {
-                if (Regex.IsMatch(maskedTextBox5.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+                if (Regex.IsMatch(volt4.Text, @"[0-5]\.[0-9][0-9][0-9]"))
                 {
                     sendVoltage(4, float.Parse(textBox5String));
                     hScrollBar5.Value = SetScrollBar(textBox5String);
@@ -144,12 +141,12 @@ namespace SIM4
             {
                 sendVoltage(5, float.Parse(textBox4String));
                 hScrollBar6.Value = SetScrollBar(textBox4String);
-                maskedTextBox6.Text = textBox4String;
+                volt5.Text = textBox4String;
             }
 
             if (linkedThrottle == 0)
             {
-                if (Regex.IsMatch(maskedTextBox6.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+                if (Regex.IsMatch(volt5.Text, @"[0-5]\.[0-9][0-9][0-9]"))
                 {
                     sendVoltage(5, float.Parse(textBox6String));
                     hScrollBar6.Value = SetScrollBar(textBox6String);
@@ -164,7 +161,7 @@ namespace SIM4
             {
                 sendVoltage(6, float.Parse(textBox6String));
                 hScrollBar7.Value = SetScrollBar(textBox6String);
-                maskedTextBox7.Text = textBox6String;
+                volt6.Text = textBox6String;
             }
 
             if (linkedPairTwo == 2)
@@ -174,12 +171,12 @@ namespace SIM4
 
                 sendVoltage(6, float.Parse(invertedVal.ToString()));
                 hScrollBar7.Value = SetScrollBar(invertedVal.ToString());
-                maskedTextBox7.Text = invertedVal.ToString();
+                volt6.Text = invertedVal.ToString();
             }
 
             if (linkedPairTwo == 0)
             {
-                if (Regex.IsMatch(maskedTextBox7.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+                if (Regex.IsMatch(volt6.Text, @"[0-5]\.[0-9][0-9][0-9]"))
                 {
                     sendVoltage(6, float.Parse(textBox7String));
                     hScrollBar7.Value = SetScrollBar(textBox7String);
@@ -188,55 +185,55 @@ namespace SIM4
 
             //maskedTextBox7 end
 
-            if (Regex.IsMatch(maskedTextBox8.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+            if (Regex.IsMatch(volt7.Text, @"[0-5]\.[0-9][0-9][0-9]"))
             {
                 sendVoltage(7, float.Parse(textBox8String));
                 hScrollBar8.Value = SetScrollBar(textBox8String);
             }
 
-            if (Regex.IsMatch(maskedTextBox9.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+            if (Regex.IsMatch(volt8.Text, @"[0-5]\.[0-9][0-9][0-9]"))
             {
                 sendVoltage(8, float.Parse(textBox9String));
                 hScrollBar9.Value = SetScrollBar(textBox9String);
             }
 
-            if (Regex.IsMatch(maskedTextBox10.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+            if (Regex.IsMatch(volt9.Text, @"[0-5]\.[0-9][0-9][0-9]"))
             {
                 sendVoltage(9, float.Parse(textBox10String));
                 hScrollBar10.Value = SetScrollBar(textBox10String);
             }
 
-            if (Regex.IsMatch(maskedTextBox11.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+            if (Regex.IsMatch(volt10.Text, @"[0-5]\.[0-9][0-9][0-9]"))
             {
                 sendVoltage(10, float.Parse(textBox11String));
                 hScrollBar11.Value = SetScrollBar(textBox11String);
             }
 
-            if (Regex.IsMatch(maskedTextBox12.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+            if (Regex.IsMatch(volt11.Text, @"[0-5]\.[0-9][0-9][0-9]"))
             {
                 sendVoltage(11, float.Parse(textBox12String));
                 hScrollBar12.Value = SetScrollBar(textBox12String);
             }
 
-            if (Regex.IsMatch(maskedTextBox13.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+            if (Regex.IsMatch(volt12.Text, @"[0-5]\.[0-9][0-9][0-9]"))
             {
                 sendVoltage(12, float.Parse(textBox13String));
                 hScrollBar13.Value = SetScrollBar(textBox13String);
             }
 
-            if (Regex.IsMatch(maskedTextBox14.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+            if (Regex.IsMatch(volt13.Text, @"[0-5]\.[0-9][0-9][0-9]"))
             {
                 sendVoltage(13, float.Parse(textBox14String));
                 hScrollBar14.Value = SetScrollBar(textBox14String);
             }
 
-            if (Regex.IsMatch(maskedTextBox15.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+            if (Regex.IsMatch(volt14.Text, @"[0-5]\.[0-9][0-9][0-9]"))
             {
                 sendVoltage(14, float.Parse(textBox15String));
                 hScrollBar15.Value = SetScrollBar(textBox15String);
             }
 
-            if (Regex.IsMatch(maskedTextBox16.Text, @"[0-5]\.[0-9][0-9][0-9]"))
+            if (Regex.IsMatch(volt15.Text, @"[0-5]\.[0-9][0-9][0-9]"))
             {
                 sendVoltage(15, float.Parse(textBox16String));
                 hScrollBar16.Value = SetScrollBar(textBox16String);
@@ -258,22 +255,64 @@ namespace SIM4
                     hScrollBarDIG0.Value = SetScrollBar(maskedTextBoxDIG0.Text);
                 }
             }
+        }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Notes0 = textBox0.Text;
+            Properties.Settings.Default.Notes1 = textBox1.Text;
+            Properties.Settings.Default.Notes2 = textBox2.Text;
+            Properties.Settings.Default.Notes3 = textBox3.Text;
+            Properties.Settings.Default.Notes4 = textBox4.Text;
+            Properties.Settings.Default.Notes5 = textBox5.Text;
+            Properties.Settings.Default.Notes6 = textBox6.Text;
+            Properties.Settings.Default.Notes7 = textBox7.Text;
+            Properties.Settings.Default.Notes8 = textBox8.Text;
+            Properties.Settings.Default.Notes9 = textBox9.Text;
+            Properties.Settings.Default.Notes10 = textBox10.Text;
+            Properties.Settings.Default.Notes11 = textBox11.Text;
+            Properties.Settings.Default.Notes12 = textBox12.Text;
+            Properties.Settings.Default.Notes13 = textBox13.Text;
+            Properties.Settings.Default.Notes14 = textBox14.Text;
+            Properties.Settings.Default.Notes15 = textBox15.Text;
+
+            Properties.Settings.Default.Voltage0 = volt0.Text;
+            Properties.Settings.Default.Voltage1 = volt1.Text;
+            Properties.Settings.Default.Voltage2 = volt2.Text;
+            Properties.Settings.Default.Voltage3 = volt3.Text;
+            Properties.Settings.Default.Voltage4 = volt4.Text;
+            Properties.Settings.Default.Voltage5 = volt5.Text;
+            Properties.Settings.Default.Voltage6 = volt6.Text;
+            Properties.Settings.Default.Voltage7 = volt7.Text;
+            Properties.Settings.Default.Voltage8 = volt8.Text;
+            Properties.Settings.Default.Voltage9 = volt9.Text;
+            Properties.Settings.Default.Voltage10 = volt10.Text;
+            Properties.Settings.Default.Voltage11 = volt11.Text;
+            Properties.Settings.Default.Voltage12 = volt12.Text;
+            Properties.Settings.Default.Voltage13 = volt13.Text;
+            Properties.Settings.Default.Voltage14 = volt14.Text;
+            Properties.Settings.Default.Voltage15 = volt15.Text;
+
+            Properties.Settings.Default.Av34Link = comboBox1.SelectedIndex;   
+            Properties.Settings.Default.Av56Link = comboBox2.SelectedIndex;
+            Properties.Settings.Default.PedalServoLink = comboBox3.SelectedIndex;
+
+        Properties.Settings.Default.Save();
         }
 
         public void sendVoltageToClampedPin()
         {//not used yet
-            if ((int.Parse(txtBoxLowClamp.Text.Replace(".", "")) <= int.Parse(maskedTextBox4.Text.Replace(".", ""))) && (int.Parse(txtBoxHiClamp.Text.Replace(".", "")) >= int.Parse(maskedTextBox4.Text.Replace(".", ""))))
+            if ((int.Parse(txtBoxLowClamp.Text.Replace(".", "")) <= int.Parse(volt3.Text.Replace(".", ""))) && (int.Parse(txtBoxHiClamp.Text.Replace(".", "")) >= int.Parse(volt3.Text.Replace(".", ""))))
             {
-                sendVoltage(3, float.Parse(maskedTextBox4.Text));
-                hScrollBar4.Value = SetScrollBar(maskedTextBox4.Text);
+                sendVoltage(3, float.Parse(volt3.Text));
+                hScrollBar4.Value = SetScrollBar(volt3.Text);
             }
-            else if (int.Parse(txtBoxLowClamp.Text.Replace(".", "")) >= int.Parse(maskedTextBox4.Text.Replace(".", "")))
+            else if (int.Parse(txtBoxLowClamp.Text.Replace(".", "")) >= int.Parse(volt3.Text.Replace(".", "")))
             {
                 sendVoltage(3, float.Parse(txtBoxLowClamp.Text));
                 hScrollBar4.Value = SetScrollBar(txtBoxLowClamp.Text);
             }
-            else if (int.Parse(txtBoxHiClamp.Text.Replace(".", "")) <= int.Parse(maskedTextBox4.Text.Replace(".", "")))
+            else if (int.Parse(txtBoxHiClamp.Text.Replace(".", "")) <= int.Parse(volt3.Text.Replace(".", "")))
             {
                 sendVoltage(3, float.Parse(txtBoxHiClamp.Text));
                 hScrollBar4.Value = SetScrollBar(txtBoxHiClamp.Text);
@@ -281,8 +320,8 @@ namespace SIM4
         }
 
         private Boolean isWithinRange()
-        {//not user yet
-            if ((int.Parse(txtBoxLowClamp.Text.Replace(".", "")) <= int.Parse(maskedTextBox4.Text.Replace(".", ""))) && (int.Parse(txtBoxHiClamp.Text.Replace(".", "")) >= int.Parse(maskedTextBox4.Text.Replace(".", ""))))
+        {//not used yet
+            if ((int.Parse(txtBoxLowClamp.Text.Replace(".", "")) <= int.Parse(volt3.Text.Replace(".", ""))) && (int.Parse(txtBoxHiClamp.Text.Replace(".", "")) >= int.Parse(volt3.Text.Replace(".", ""))))
             {
 
             }
@@ -308,7 +347,7 @@ namespace SIM4
         private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
         {
             string a = ((float)(hScrollBar1.Value) / 1000).ToString("0.000");
-            maskedTextBox1.Text = a;
+            volt0.Text = a;
         }
 
         private static int SetScrollBar(string a)
@@ -327,13 +366,13 @@ namespace SIM4
         private void hScrollBar2_Scroll(object sender, ScrollEventArgs e)
         {
             string a = ((float)(hScrollBar2.Value) / 1000).ToString("0.000");
-            maskedTextBox2.Text = a;
+            volt1.Text = a;
         }
 
         private void hScrollBar3_Scroll(object sender, ScrollEventArgs e)
         {
             string a = ((float)(hScrollBar3.Value) / 1000).ToString("0.000");
-            maskedTextBox3.Text = a;
+            volt2.Text = a;
         }
 
         private void hScrollBar4_Scroll(object sender, ScrollEventArgs e)
@@ -341,87 +380,87 @@ namespace SIM4
             string a = ((float)(hScrollBar4.Value) / 1000).ToString("0.000");
             if (((float)(hScrollBar4.Value) >= textBoxLowClampInt) && ((float)(hScrollBar4.Value) <= textBoxHiClampInt))
             {
-                maskedTextBox4.Text = a;
+                volt3.Text = a;
             }
             else if ((float)(hScrollBar4.Value) <= textBoxLowClampInt)
             {
-                maskedTextBox4.Text = txtBoxLowClamp.Text;
+                volt3.Text = txtBoxLowClamp.Text;
             }
             else if ((float)(hScrollBar4.Value) >= textBoxHiClampInt)
             {
-                maskedTextBox4.Text = txtBoxHiClamp.Text;
+                volt3.Text = txtBoxHiClamp.Text;
             }
         }
         private void hScrollBar5_Scroll(object sender, ScrollEventArgs e)
         {
             string a = ((float)(hScrollBar5.Value) / 1000).ToString("0.000");
-            maskedTextBox5.Text = a;
+            volt4.Text = a;
         }
 
         private void hScrollBar6_Scroll(object sender, ScrollEventArgs e)
         {
             string a = ((float)(hScrollBar6.Value) / 1000).ToString("0.000");
-            maskedTextBox6.Text = a;
+            volt5.Text = a;
         }
 
         private void hScrollBar7_Scroll(object sender, ScrollEventArgs e)
         {
             string a = ((float)(hScrollBar7.Value) / 1000).ToString("0.000");
-            maskedTextBox7.Text = a;
+            volt6.Text = a;
         }
 
         private void hScrollBar8_Scroll(object sender, ScrollEventArgs e)
         {
             string a = ((float)(hScrollBar8.Value) / 1000).ToString("0.000");
-            maskedTextBox8.Text = a;
+            volt7.Text = a;
         }
 
         private void hScrollBar9_Scroll(object sender, ScrollEventArgs e)
         {
             string a = ((float)(hScrollBar9.Value) / 1000).ToString("0.000");
-            maskedTextBox9.Text = a;
+            volt8.Text = a;
         }
 
         private void hScrollBar10_Scroll(object sender, ScrollEventArgs e)
         {
             string a = ((float)(hScrollBar10.Value) / 1000).ToString("0.000");
-            maskedTextBox10.Text = a;
+            volt9.Text = a;
         }
 
         private void hScrollBar11_Scroll(object sender, ScrollEventArgs e)
         {
             string a = ((float)(hScrollBar11.Value) / 1000).ToString("0.000");
-            maskedTextBox11.Text = a;
+            volt10.Text = a;
         }
 
         private void hScrollBar12_Scroll(object sender, ScrollEventArgs e)
         {
             string a = ((float)(hScrollBar12.Value) / 1000).ToString("0.000");
-            maskedTextBox12.Text = a;
+            volt11.Text = a;
         }
 
         private void hScrollBar13_Scroll(object sender, ScrollEventArgs e)
         {
             string a = ((float)(hScrollBar13.Value) / 1000).ToString("0.000");
-            maskedTextBox13.Text = a;
+            volt12.Text = a;
         }
 
         private void hScrollBar14_Scroll(object sender, ScrollEventArgs e)
         {
             string a = ((float)(hScrollBar14.Value) / 1000).ToString("0.000");
-            maskedTextBox14.Text = a;
+            volt13.Text = a;
         }
 
         private void hScrollBar15_Scroll(object sender, ScrollEventArgs e)
         {
             string a = ((float)(hScrollBar15.Value) / 1000).ToString("0.000");
-            maskedTextBox15.Text = a;
+            volt14.Text = a;
         }
 
         private void hScrollBar16_Scroll(object sender, ScrollEventArgs e)
         {
             string a = ((float)(hScrollBar16.Value) / 1000).ToString("0.000");
-            maskedTextBox16.Text = a;
+            volt15.Text = a;
         }
 
         private void hScrollBarDIG0_Scroll(object sender, ScrollEventArgs e)
@@ -438,8 +477,6 @@ namespace SIM4
 
         private void linkButton_Click(object sender, EventArgs e)
         {
-
-
 
         }
 
@@ -531,41 +568,6 @@ namespace SIM4
             DaqBoard.DOut(PortNum, (ushort)num);
         }
 
-
-
-        private static System.Timers.Timer aTimer;
-
-    /*    public void TxDIG(int pulseWidth)
-        {
-            threadRunning = true;
-            DateTime curr = DateTime.Now;
-
-            PortType = clsDigitalIO.PORTOUT;
-            NumPorts = DioProps.FindPortsOfType(DaqBoard, PortType, out ProgAbility,
-                out PortNum,
-                out NumBits, out FirstBit);
-
-            Direction = MccDaq.DigitalPortDirection.DigitalOut;
-
-            DaqBoard.DConfigPort(PortNum, Direction);
-
-            using (sw)
-            {
-
-                while ((maskedTextBoxDIG0.Text != "0"))
-                {
-                    var sleepPeriod = 255 - int.Parse(maskedTextBoxDIG0.Text);
-                    DaqBoard.DOut(PortNum, (ushort)0);
-                    Thread.Sleep(sleepPeriod);
-                    DaqBoard.DOut(PortNum, (ushort)1);
-                    Thread.Sleep(sleepPeriod);
-                    //        sw.WriteLine("sleepPeriod: " + sleepPeriod + "       Timer:    " + DateTime.Now.ToString("HH:mm:ss.fff"));
-                    //#TODO Failing as soon as we change value because its opening up another thread I think. Closing one and opening another? 
-                }
-            }
-            threadRunning = false;
-        }*/
-
         public void TxDIGTest(int pulseWidth)
         {
             threadRunning = true;
@@ -592,8 +594,6 @@ namespace SIM4
                 swExtension.fastSleep(swt, sleepPeriod);
                 DaqBoard.DOut(PortNum, (ushort)1);
                 swExtension.fastSleep(swt, sleepPeriod);
-
-
             }
             threadRunning = false;
         }
@@ -604,36 +604,13 @@ namespace SIM4
 
         }
 
-        private void saveSettingsBtn_Click(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Notes0 = textBox0.Text;
-            Properties.Settings.Default.Notes1 = textBox1.Text;
-            Properties.Settings.Default.Notes2 = textBox2.Text;
-            Properties.Settings.Default.Notes3 = textBox3.Text;
-            Properties.Settings.Default.Notes4 = textBox4.Text;
-            Properties.Settings.Default.Notes5 = textBox5.Text;
-            Properties.Settings.Default.Notes6 = textBox6.Text;
-            Properties.Settings.Default.Notes7 = textBox7.Text;
-            Properties.Settings.Default.Notes8 = textBox8.Text;
-            Properties.Settings.Default.Notes9 = textBox9.Text;
-            Properties.Settings.Default.Notes10 = textBox10.Text;
-            Properties.Settings.Default.Notes11 = textBox11.Text;
-            Properties.Settings.Default.Notes12 = textBox12.Text;
-            Properties.Settings.Default.Notes13 = textBox13.Text;
-            Properties.Settings.Default.Notes14 = textBox14.Text;
-            Properties.Settings.Default.Notes15 = textBox15.Text;
-
-            Properties.Settings.Default.Save();
-        }
-
-        private void testNotes()
+        private void loadSettings()
         {
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal);
             bool a = config.HasFile;
             var b = config.FilePath;
             textBox1.Text = b;
-            //var Note1settings = Properties.Settings.Default.Notes1;
-            //var c = config.AppSettings;
+
             try
             {
                 textBox0.Text = Properties.Settings.Default.Notes0;
@@ -652,6 +629,27 @@ namespace SIM4
                 textBox13.Text = Properties.Settings.Default.Notes13;
                 textBox14.Text = Properties.Settings.Default.Notes14;
                 textBox15.Text = Properties.Settings.Default.Notes15;
+
+                volt0.Text = Properties.Settings.Default.Voltage0;
+                volt1.Text = Properties.Settings.Default.Voltage1;
+                volt2.Text = Properties.Settings.Default.Voltage2;
+                volt3.Text = Properties.Settings.Default.Voltage3;
+                volt4.Text = Properties.Settings.Default.Voltage4;
+                volt5.Text = Properties.Settings.Default.Voltage5;
+                volt6.Text = Properties.Settings.Default.Voltage6;
+                volt7.Text = Properties.Settings.Default.Voltage7;
+                volt8.Text = Properties.Settings.Default.Voltage8;
+                volt9.Text = Properties.Settings.Default.Voltage9;
+                volt10.Text = Properties.Settings.Default.Voltage10;
+                volt11.Text = Properties.Settings.Default.Voltage11;
+                volt12.Text = Properties.Settings.Default.Voltage12;
+                volt13.Text = Properties.Settings.Default.Voltage13;
+                volt14.Text = Properties.Settings.Default.Voltage14;
+                volt15.Text = Properties.Settings.Default.Voltage15;
+
+                comboBox1.SelectedIndex = Properties.Settings.Default.Av34Link;
+                comboBox2.SelectedIndex = Properties.Settings.Default.Av56Link;
+                comboBox3.SelectedIndex = Properties.Settings.Default.PedalServoLink;
             }
             catch (Exception e)
             {
@@ -661,24 +659,6 @@ namespace SIM4
 
         }
     }
-
-
-    /* This code works. I made it fancy now and I have no faith in my abilities, so revert to this if all hell breaks loose.
-     *  if (Regex.IsMatch(maskedTextBox2.Text, @"[0-5]\.[0-9][0-9][0-9]"))
-                {
-                    sendVoltage(1, float.Parse(maskedTextBox2.Text));
-                    string wej = maskedTextBox1.Text.Replace(".", "");
-                    if (int.Parse(wej) > 5000)
-                    {
-                        hScrollBar1.Value = 5000;
-                    }
-                    else
-                    {
-                        hScrollBar1.Value = int.Parse(wej);
-                    }
-                }
-    */
-
 
     public static class swExtension
     {
