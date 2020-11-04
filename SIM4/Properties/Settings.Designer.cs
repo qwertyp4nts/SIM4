@@ -25,7 +25,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("test")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Notes1 {
             get {
                 return ((string)(this["Notes1"]));
@@ -229,7 +229,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.000")]
         public string Voltage1 {
             get {
                 return ((string)(this["Voltage1"]));
@@ -241,7 +241,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.000")]
         public string Voltage2 {
             get {
                 return ((string)(this["Voltage2"]));
@@ -253,7 +253,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.000")]
         public string Voltage3 {
             get {
                 return ((string)(this["Voltage3"]));
@@ -265,7 +265,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.000")]
         public string Voltage4 {
             get {
                 return ((string)(this["Voltage4"]));
@@ -277,7 +277,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.000")]
         public string Voltage5 {
             get {
                 return ((string)(this["Voltage5"]));
@@ -289,7 +289,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.000")]
         public string Voltage6 {
             get {
                 return ((string)(this["Voltage6"]));
@@ -301,7 +301,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.000")]
         public string Voltage7 {
             get {
                 return ((string)(this["Voltage7"]));
@@ -313,7 +313,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.000")]
         public string Voltage8 {
             get {
                 return ((string)(this["Voltage8"]));
@@ -325,7 +325,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.000")]
         public string Voltage9 {
             get {
                 return ((string)(this["Voltage9"]));
@@ -337,7 +337,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.000")]
         public string Voltage10 {
             get {
                 return ((string)(this["Voltage10"]));
@@ -349,7 +349,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.000")]
         public string Voltage11 {
             get {
                 return ((string)(this["Voltage11"]));
@@ -361,7 +361,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.000")]
         public string Voltage12 {
             get {
                 return ((string)(this["Voltage12"]));
@@ -373,7 +373,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.000")]
         public string Voltage13 {
             get {
                 return ((string)(this["Voltage13"]));
@@ -385,7 +385,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.000")]
         public string Voltage14 {
             get {
                 return ((string)(this["Voltage14"]));
@@ -397,7 +397,7 @@ namespace SIM4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.000")]
         public string Voltage15 {
             get {
                 return ((string)(this["Voltage15"]));

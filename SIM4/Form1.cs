@@ -18,15 +18,12 @@ namespace SIM4
         int linkedPairTwo = 0;
         int linkedThrottle = 0;
 
-
         int NumPorts, NumBits, FirstBit;
         int PortType, ProgAbility;
 
         bool threadRunning = false;
 
-        int textBoxLowClampInt;
-        int textBoxHiClampInt;
-        int textBox4Int;
+        int textBoxLowClampInt, textBoxHiClampInt, textBox4Int;
 
         string textBox1String, textBox2String, textBox3String, textBox4String, textBox5String, textBox6String, textBox7String, textBox8String, textBox9String, textBox10String, textBox11String, textBox12String, textBox13String, textBox14String, textBox15String, textBox16String;
 
@@ -45,11 +42,25 @@ namespace SIM4
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //    textBoxCollection = new String[] { textBox1String, textBox2String, textBox3String };
+            try
+            {
+                //If the supporting OMEGA software is not installed properly, DaqBoard.BoardName will be NULL and throw an exception when attempting to query
+                //If the device is installed properly the value may be empty, but it won't be null
+                if (DaqBoard.BoardName == null)
+                {
+                    MessageBox.Show("OMEGA device OM-USB-3105 not installed properly. Some/all features may not work.", "Warning");
+                }
+            }
+            catch (NullReferenceException)
+            {
+                Application.Exit();
+                Environment.Exit(0); //this one actually works (just not through NSIS installer)
+                return; //Trouble exiting winforms app. Apparently a common issue. To investigate
+            }
 
-            textBoxLowClampInt = int.Parse(txtBoxLowClamp.Text.Replace(".", ""));
-            textBoxHiClampInt = int.Parse(txtBoxHiClamp.Text.Replace(".", ""));
-            textBox4Int = int.Parse(volt3.Text.Replace(".", ""));
+            bool lowClampParsed = int.TryParse(txtBoxLowClamp.Text.Replace(".", ""), out textBoxLowClampInt);
+            bool hiClampParsed = int.TryParse(txtBoxHiClamp.Text.Replace(".", ""), out textBoxHiClampInt);
+            bool textBox4Parsed = int.TryParse(volt3.Text.Replace(".", ""), out textBox4Int);
 
             textBox1String = volt0.Text;
             textBox2String = volt1.Text;
@@ -88,21 +99,7 @@ namespace SIM4
 
             if (Regex.IsMatch(volt3.Text, @"[0-5]\.[0-9][0-9][0-9]"))
             {
-                if ((textBoxLowClampInt <= textBox4Int) && (textBoxHiClampInt >= textBox4Int))
-                {
-                    sendVoltage(3, float.Parse(textBox4String));
-                    hScrollBar4.Value = SetScrollBar(textBox4String);
-                }
-                else if (textBoxLowClampInt >= textBox4Int)
-                {
-                    sendVoltage(3, float.Parse(txtBoxLowClamp.Text));
-                    hScrollBar4.Value = SetScrollBar(txtBoxLowClamp.Text);
-                }
-                else if (textBoxHiClampInt <= textBox4Int)
-                {
-                    sendVoltage(3, float.Parse(txtBoxHiClamp.Text));
-                    hScrollBar4.Value = SetScrollBar(txtBoxHiClamp.Text);
-                }
+                sendVoltageToClampedPin();
             }
 
             //maskedTextBox5 begin
@@ -131,12 +128,10 @@ namespace SIM4
                     hScrollBar5.Value = SetScrollBar(textBox5String);
                 }
             }
-
             //maskedTextBox5 end
 
 
             //maskedTextBox6 begin
-
             if (linkedThrottle == 1)
             {
                 sendVoltage(5, float.Parse(textBox4String));
@@ -152,7 +147,6 @@ namespace SIM4
                     hScrollBar6.Value = SetScrollBar(textBox6String);
                 }
             }
-
             //maskedTextBox6 end
 
 
@@ -182,7 +176,6 @@ namespace SIM4
                     hScrollBar7.Value = SetScrollBar(textBox7String);
                 }
             }
-
             //maskedTextBox7 end
 
             if (Regex.IsMatch(volt7.Text, @"[0-5]\.[0-9][0-9][0-9]"))
@@ -297,7 +290,7 @@ namespace SIM4
             Properties.Settings.Default.Av56Link = comboBox2.SelectedIndex;
             Properties.Settings.Default.PedalServoLink = comboBox3.SelectedIndex;
 
-        Properties.Settings.Default.Save();
+            Properties.Settings.Default.Save();
         }
 
         public void sendVoltageToClampedPin()
@@ -330,7 +323,16 @@ namespace SIM4
 
         public void sendVoltageAndUpdatePin(int pinNum, string boxNum)
         {
-            sendVoltage(pinNum, float.Parse(boxNum));
+            try
+            {
+                sendVoltage(pinNum, float.Parse(boxNum));
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("OMEGA device not installed properly. Please check drivers are installed correctly", "Critical Error");
+                Application.Exit();
+                return;
+            }
         }
 
         private void maskedTextBox1_TextChanged(object sender, KeyPressEventArgs e)
@@ -413,6 +415,11 @@ namespace SIM4
         {
             string a = ((float)(hScrollBar8.Value) / 1000).ToString("0.000");
             volt7.Text = a;
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void hScrollBar9_Scroll(object sender, ScrollEventArgs e)
@@ -606,10 +613,11 @@ namespace SIM4
 
         private void loadSettings()
         {
-            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal);
+         /*   Commented out code proves user.config exists in AppData folder
+          *   var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal);
             bool a = config.HasFile;
             var b = config.FilePath;
-            textBox1.Text = b;
+            textBox1.Text = b;*/
 
             try
             {
@@ -650,7 +658,7 @@ namespace SIM4
                 comboBox1.SelectedIndex = Properties.Settings.Default.Av34Link;
                 comboBox2.SelectedIndex = Properties.Settings.Default.Av56Link;
                 comboBox3.SelectedIndex = Properties.Settings.Default.PedalServoLink;
-            }
+     }
             catch (Exception e)
             {
                 //all good
