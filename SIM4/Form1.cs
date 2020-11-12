@@ -12,7 +12,7 @@ namespace SIM4
 {
     public partial class Form1 : Form
     {
-        static MccBoard DaqBoard = new MccDaq.MccBoard(1);
+        static MccBoard DaqBoard;
 
         int linked = 0;
         int linkedPairTwo = 0;
@@ -36,19 +36,44 @@ namespace SIM4
 
         public Form1()
         {
+            InitialiseBoard();
             InitializeComponent();
             loadSettings();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void InitialiseBoard()
         {
+            //on most people's PCs the BoardNum will be 0. on mila's pc its 1 for some reason.
+            //#TODO make this dynamic, but we should allow user to select board if they have multiples
+            try
+            {
+                DaqBoard = new MccDaq.MccBoard(0);
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    DaqBoard = new MccDaq.MccBoard(1);
+                }
+                catch (Exception ex2)
+                {
+                    MessageBox.Show(ex2.ToString());
+                }
+            }
+
             try
             {
                 //If the supporting OMEGA software is not installed properly, DaqBoard.BoardName will be NULL and throw an exception when attempting to query
                 //If the device is installed properly the value may be empty, but it won't be null
+                /*if (DaqBoard.BoardName != null)
+                {
+                    MessageBox.Show("DAQ BOARD NOT NULL. Board name: " + DaqBoard.BoardName + "\n" + "Board num: " + DaqBoard.BoardNum);
+                }*/
+
                 if (DaqBoard.BoardName == null)
                 {
                     MessageBox.Show("OMEGA device OM-USB-3105 not installed properly. Some/all features may not work.", "Warning");
+                    MessageBox.Show("Board name: " + DaqBoard.BoardName + "\n" + "Board num: " + DaqBoard.BoardNum);
                 }
             }
             catch (NullReferenceException)
@@ -57,7 +82,10 @@ namespace SIM4
                 Environment.Exit(0); //this one actually works (just not through NSIS installer)
                 return; //Trouble exiting winforms app. Apparently a common issue. To investigate
             }
+        }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
             bool lowClampParsed = int.TryParse(txtBoxLowClamp.Text.Replace(".", ""), out textBoxLowClampInt);
             bool hiClampParsed = int.TryParse(txtBoxHiClamp.Text.Replace(".", ""), out textBoxHiClampInt);
             bool textBox4Parsed = int.TryParse(volt3.Text.Replace(".", ""), out textBox4Int);
@@ -295,20 +323,27 @@ namespace SIM4
 
         public void sendVoltageToClampedPin()
         {//not used yet
-            if ((int.Parse(txtBoxLowClamp.Text.Replace(".", "")) <= int.Parse(volt3.Text.Replace(".", ""))) && (int.Parse(txtBoxHiClamp.Text.Replace(".", "")) >= int.Parse(volt3.Text.Replace(".", ""))))
+            try
             {
-                sendVoltage(3, float.Parse(volt3.Text));
-                hScrollBar4.Value = SetScrollBar(volt3.Text);
+                if ((int.Parse(txtBoxLowClamp.Text.Replace(".", "")) <= int.Parse(volt3.Text.Replace(".", ""))) && (int.Parse(txtBoxHiClamp.Text.Replace(".", "")) >= int.Parse(volt3.Text.Replace(".", ""))))
+                {
+                    sendVoltage(3, float.Parse(volt3.Text));
+                    hScrollBar4.Value = SetScrollBar(volt3.Text);
+                }
+                else if (int.Parse(txtBoxLowClamp.Text.Replace(".", "")) >= int.Parse(volt3.Text.Replace(".", "")))
+                {
+                    sendVoltage(3, float.Parse(txtBoxLowClamp.Text));
+                    hScrollBar4.Value = SetScrollBar(txtBoxLowClamp.Text);
+                }
+                else if (int.Parse(txtBoxHiClamp.Text.Replace(".", "")) <= int.Parse(volt3.Text.Replace(".", "")))
+                {
+                    sendVoltage(3, float.Parse(txtBoxHiClamp.Text));
+                    hScrollBar4.Value = SetScrollBar(txtBoxHiClamp.Text);
+                }
             }
-            else if (int.Parse(txtBoxLowClamp.Text.Replace(".", "")) >= int.Parse(volt3.Text.Replace(".", "")))
+            catch (Exception e)
             {
-                sendVoltage(3, float.Parse(txtBoxLowClamp.Text));
-                hScrollBar4.Value = SetScrollBar(txtBoxLowClamp.Text);
-            }
-            else if (int.Parse(txtBoxHiClamp.Text.Replace(".", "")) <= int.Parse(volt3.Text.Replace(".", "")))
-            {
-                sendVoltage(3, float.Parse(txtBoxHiClamp.Text));
-                hScrollBar4.Value = SetScrollBar(txtBoxHiClamp.Text);
+                MessageBox.Show(e.ToString());
             }
         }
 
@@ -327,11 +362,13 @@ namespace SIM4
             {
                 sendVoltage(pinNum, float.Parse(boxNum));
             }
-            catch (NullReferenceException)
+            //catch (NullReferenceException)
+            catch (Exception e)
             {
-                MessageBox.Show("OMEGA device not installed properly. Please check drivers are installed correctly", "Critical Error");
-                Application.Exit();
-                return;
+                MessageBox.Show(e.ToString());
+                //MessageBox.Show("OMEGA device not installed properly. Please check drivers are installed correctly", "Critical Error");
+                //Application.Exit();
+                //return;
             }
         }
 
